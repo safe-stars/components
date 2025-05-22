@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,5 +26,18 @@
     background-position: 0 0, 25px 25px;
     -webkit-animation: slide 2s linear infinite;
     animation: slide 4s linear infinite;
+  }
+
+  body, h2, h3, h4, h5, h6 {
+    font-family: "Manrope", sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+    color: #fff;
+  }
+  
+  h1 {
+    font-family: Helvetica, Arial, sans-serif;
   }
 }

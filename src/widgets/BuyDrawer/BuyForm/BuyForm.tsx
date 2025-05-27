@@ -8,10 +8,9 @@ type BuyFormProps = {
   };
   setFormData: (data: { username: string; starsCount: number }) => void;
   onContinue: () => void;
-  onBack: () => void;
 };
 
-const BuyForm = ({ formData, setFormData, onContinue, onBack }: BuyFormProps) => {
+const BuyForm = ({ formData, setFormData, onContinue }: BuyFormProps) => {
   const [errors, setErrors] = useState({ username: '', starsCount: '' });
 
   const validateForm = (): boolean => {
@@ -76,10 +75,7 @@ const BuyForm = ({ formData, setFormData, onContinue, onBack }: BuyFormProps) =>
         )}
       </div>
 
-      <div className="flex justify-between mt-auto">
-        <Button variant="secondary" onClick={onBack}>
-          Назад
-        </Button>
+      <div className="flex justify-end mt-auto">
         <Button onClick={handleSubmit}>
           Продолжить
         </Button>

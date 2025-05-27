@@ -1,22 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BuyForm from './BuyForm/BuyForm';
 import PaymentMethodSelection from './PaymentMethodSelection/PaymentMethodSelection';
 import PaymentForm from './PaymentForm/PaymentForm';
 import SuccessModal from './SuccessModal/SuccessModal';
 import { Drawer } from '../../components';
 import { Coin, Payment } from '../../types';
+import { BuyStarsData } from './BuyDrawerContext';
 
 type BuyDrawerProps = {
+  formData: BuyStarsData;
+  setFormData: (data: BuyStarsData) => void;
   isOpen: boolean;
   onClose: () => void;
+  skipFirstStep: boolean;
 };
 
-const BuyDrawer = ({ isOpen, onClose }: BuyDrawerProps) => {
-  const [step, setStep] = useState<'form' | 'payment-method' | 'payment' | 'success'>('form');
-  const [formData, setFormData] = useState({
-    username: '',
-    starsCount: 50,
-  });
+type Step = 'form' | 'payment-method' | 'payment' | 'success';
+
+const BuyDrawer = (props: BuyDrawerProps) => {
+  const { formData, setFormData, isOpen, onClose, skipFirstStep } = props;
+
+  const [step, setStep] = useState<Step>('form');
   const [paymentMethod, setPaymentMethod] = useState<'RUB' | Coin | null>(null);
   const [amount, setAmount] = useState<number | null>(null);
   const [depositUrl, setDepositUrl] = useState<string | null>(null);
@@ -31,6 +35,12 @@ const BuyDrawer = ({ isOpen, onClose }: BuyDrawerProps) => {
     onClose();
   };
 
+  useEffect(() => {
+    if (skipFirstStep) {
+      setStep('payment-method');
+    }
+  }, [skipFirstStep, isOpen]);
+
   return (
     <Drawer isOpen={isOpen} onClose={handleClose} title="Покупка Telegram Stars">
       {step === 'form' ? (
@@ -44,7 +54,6 @@ const BuyDrawer = ({ isOpen, onClose }: BuyDrawerProps) => {
             setPaymentMethod(null);
             setAmount(null);
           }}
-          onBack={onClose}
         />
       ) : step === 'payment-method' ? (
         <PaymentMethodSelection
@@ -54,6 +63,7 @@ const BuyDrawer = ({ isOpen, onClose }: BuyDrawerProps) => {
           setAmount={setAmount}
           onBack={() => setStep('form')}
           onContinue={() => setStep('payment')}
+          skipFirstStep={skipFirstStep}
         />
       ) : step === 'payment' ? (
         <PaymentForm

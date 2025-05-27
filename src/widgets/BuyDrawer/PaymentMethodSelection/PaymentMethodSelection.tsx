@@ -3,6 +3,7 @@ import { Button, Spinner } from '../../../components';
 import { getPrice } from '../../../api/getPrice';
 import { verifyRecipient } from '../../../api/verifyRecipient';
 import { Coin } from '../../../types';
+import cn from 'classnames';
 
 type PaymentMethodSelectionProps = {
   userData: {
@@ -14,6 +15,7 @@ type PaymentMethodSelectionProps = {
   setAmount: (amount: number) => void;
   onBack: () => void;
   onContinue: () => void;
+  skipFirstStep: boolean;
 };
 
 const PaymentMethodSelection = ({
@@ -22,7 +24,8 @@ const PaymentMethodSelection = ({
   setPaymentMethod,
   setAmount,
   onBack,
-  onContinue
+  onContinue,
+  skipFirstStep
 }: PaymentMethodSelectionProps) => {
   const [price, setPrice] = useState<number | null>(null);
   const [cryptoPrice, setCryptoPrice] = useState<number | null>(null);
@@ -74,14 +77,17 @@ const PaymentMethodSelection = ({
       </p>
 
       {status === 'loading' && (
-        <div className="mb-8 flex justify-center items-center">
+        <div className="mb-8 flex justify-center items-center flex-1">
           <Spinner />
         </div>
       )}
       {status === 'error' && (
         <div className="mb-8 flex justify-center items-center">
-          <p className="font-medium mb-2 text-danger text-center  ">
-            Произошла ошибка. Проверьте имя пользователя и количество звезд.
+          <p className="font-medium mb-2 text-danger text-center">
+            {!skipFirstStep
+              ? 'Произошла ошибка. Проверьте имя пользователя и количество звезд.'
+              : 'Произошла ошибка. Проверьте, что у вас задано имя пользователя.'
+            }
           </p>
         </div>
       )}
@@ -135,13 +141,30 @@ const PaymentMethodSelection = ({
             </div>
 
           </div>
+
+          {skipFirstStep && (
+            <div className="w-full mt-6 flex justify-center">
+              <Button variant="secondary" onClick={onBack} size="lg">
+                Выбрать другую сумму
+              </Button>
+            </div>
+          )}
         </div>
       )}
 
-      <div className="flex justify-between mt-auto">
-        <Button variant="secondary" onClick={onBack}>
-          Назад
-        </Button>
+      <div
+        className={cn(
+          "flex mt-auto", {
+          'justify-between': !skipFirstStep,
+          'justify-end': skipFirstStep
+        }
+        )}
+      >
+        {!skipFirstStep && (
+          <Button variant="secondary" onClick={onBack}>
+            Назад
+          </Button>
+        )}
         <Button
           onClick={handleContinue}
           disabled={!paymentMethod && status === 'success'}

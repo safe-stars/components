@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./app";
-import { BuyDrawerProvider } from "./widgets";
+import { SafeStarsProvider } from "./widgets";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
 
 mockTelegramEnv({
@@ -12,8 +12,8 @@ mockTelegramEnv({
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BuyDrawerProvider>
+    <SafeStarsProvider>
       <App />
-    </BuyDrawerProvider>
+    </SafeStarsProvider>
   </React.StrictMode>,
 );

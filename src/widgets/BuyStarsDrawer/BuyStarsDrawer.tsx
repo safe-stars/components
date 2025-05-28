@@ -5,9 +5,9 @@ import PaymentForm from './PaymentForm/PaymentForm';
 import SuccessModal from './SuccessModal/SuccessModal';
 import { Drawer } from '../../components';
 import { Coin, Payment } from '../../types';
-import { BuyStarsData } from './BuyDrawerContext';
+import { BuyStarsData } from './SafeStarsContext';
 
-type BuyDrawerProps = {
+type BuyStarsDrawerProps = {
   formData: BuyStarsData;
   setFormData: (data: BuyStarsData) => void;
   isOpen: boolean;
@@ -17,7 +17,7 @@ type BuyDrawerProps = {
 
 type Step = 'form' | 'payment-method' | 'payment' | 'success';
 
-const BuyDrawer = (props: BuyDrawerProps) => {
+const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
   const { formData, setFormData, isOpen, onClose, skipFirstStep } = props;
 
   const [step, setStep] = useState<Step>('form');
@@ -88,4 +88,4 @@ const BuyDrawer = (props: BuyDrawerProps) => {
   );
 };
 
-export default BuyDrawer; 
+export default BuyStarsDrawer; 

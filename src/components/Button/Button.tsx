@@ -1,14 +1,14 @@
 import { ReactNode } from 'react';
 import './styles.css';
 
-interface ButtonProps {
-  children: ReactNode;
-  onClick?: () => void;
+export interface ButtonProps {
+  type?: 'button' | 'submit' | 'reset';
   variant?: 'primary' | 'secondary' | 'outlined';
   className?: string;
-  type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   size?: 'md' | 'lg';
+  children: ReactNode;
+  onClick?: () => void;
 }
 
 const Button = ({

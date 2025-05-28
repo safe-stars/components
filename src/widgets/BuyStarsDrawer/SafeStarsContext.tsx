@@ -1,23 +1,23 @@
 import React, { createContext, useContext, useState } from 'react';
-import { BuyDrawer } from './';
+import { BuyStarsDrawer } from '.';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { AppKitProvider } from '../../utils/AppKitProvider';
 import { useLaunchParams } from '@telegram-apps/sdk-react';
 
-interface BuyDrawerContextType {
+interface SafeStarsContextType {
   isOpen: boolean;
   openDrawer: (params?: { stars?: number }) => void;
   closeDrawer: () => void;
 }
 
-const BuyDrawerContext = createContext<BuyDrawerContextType | undefined>(undefined);
+const SafeStarsContext = createContext<SafeStarsContextType | undefined>(undefined);
 
 export type BuyStarsData = {
   username: string;
   starsCount: number;
 };
 
-export const BuyDrawerProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const SafeStarsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [skipFirstStep, setSkipFirstStep] = useState(false);
   const launchParams = useLaunchParams();
@@ -51,25 +51,25 @@ export const BuyDrawerProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         manifestUrl='./tonconnect-manifest.json'
         actionsConfiguration={{ returnStrategy: "back" }}
       >
-        <BuyDrawerContext.Provider value={{ isOpen, openDrawer, closeDrawer }}>
+        <SafeStarsContext.Provider value={{ isOpen, openDrawer, closeDrawer }}>
           {children}
-          <BuyDrawer
+          <BuyStarsDrawer
             isOpen={isOpen}
             onClose={closeDrawer}
             formData={formData}
             setFormData={setFormData}
             skipFirstStep={skipFirstStep}
           />
-        </BuyDrawerContext.Provider>
+        </SafeStarsContext.Provider>
       </TonConnectUIProvider>
     </AppKitProvider>
   );
 };
 
-export const useBuyDrawer = () => {
-  const context = useContext(BuyDrawerContext);
+export const useSafeStars = () => {
+  const context = useContext(SafeStarsContext);
   if (context === undefined) {
-    throw new Error('useBuyDrawer must be used within a BuyDrawerProvider');
+    throw new Error('useSafeStars must be used within a SafeStarsProvider');
   }
   return context;
 };

@@ -1,27 +1,27 @@
 {
-  "name": "vital",
+  "name": "@safe-stars/components",
   "type": "module",
   "version": "1.0.0",
-  "description": "Starter template for Vite with React (TypeScript). Supports Tailwind. Vitest and @react/testing-library configured and ready to go. Also ESLint, Prettier, Husky, Commit-lint and Atomic Design for components.",
-  "homepage": "https://github.com/jvidalv/vital#readme",
+  "description": "React component library for buying Telegram Stars in Telegram Mini Apps via Safe Stars.",
+  "homepage": "https://github.com/safe-stars/components#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jvidalv/vital.git"
+    "url": "git+https://github.com/safe-stars/components.git"
   },
-  "author": "Josep Vidal <josepvidalvidal@gmail.com>",
+  "author": "Safe Stars",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jvidalv/vital/issues"
+    "url": "https://github.com/safe-stars/components/issues"
   },
   "keywords": [
     "react",
-    "vite",
-    "typescript",
-    "tailwind",
-    "template",
-    "starter",
-    "eslint",
-    "prettier"
+    "telegram",
+    "mini-apps",
+    "ton",
+    "blockchain",
+    "components",
+    "ui-library",
+    "telegram-stars"
   ],
   "browserslist": [
     ">0.2%",

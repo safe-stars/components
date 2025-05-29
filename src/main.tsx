@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./app";
 import { SafeStarsProvider } from "./widgets";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
+import './index.css';
 
 mockTelegramEnv({
   launchParams:

@@ -4,10 +4,11 @@ import react from "@vitejs/plugin-react";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), nodePolyfills()],
+    plugins: [react(), nodePolyfills(), cssInjectedByJsPlugin()],
     build: {
       lib: {
         entry: resolve(__dirname, "index.ts"),

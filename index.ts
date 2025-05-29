@@ -1,2 +1,2 @@
-import './src/lib.css';
-export * from './src/widgets'; 
+export * from './src/widgets';
+import './src/index.css';

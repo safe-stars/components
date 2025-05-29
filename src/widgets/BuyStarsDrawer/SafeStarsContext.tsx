@@ -3,7 +3,6 @@ import { BuyStarsDrawer } from '.';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { AppKitProvider } from '../../utils/AppKitProvider';
 import { useLaunchParams } from '@telegram-apps/sdk-react';
-import '../../lib.css';
 
 interface SafeStarsContextType {
   isOpen: boolean;

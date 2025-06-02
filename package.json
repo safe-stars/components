@@ -1,0 +1,104 @@
+{
+  "name": "@safe-stars/components",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "React component library for buying Telegram Stars in Telegram Mini Apps via Safe Stars.",
+  "homepage": "https://github.com/safe-stars/components#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safe-stars/components.git"
+  },
+  "author": "Safe Stars",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/safe-stars/components/issues"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "keywords": [
+    "react",
+    "telegram",
+    "mini-apps",
+    "ton",
+    "blockchain",
+    "components",
+    "ui-library",
+    "telegram-stars"
+  ],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not IE 11"
+  ],
+  "engines": {
+    "node": ">=18",
+    "yarn": ">=1.22.5"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --project tsconfig.build.json && vite build",
+    "build:types": "tsc --project tsconfig.build.json --emitDeclarationOnly --outDir dist",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "prepublishOnly": "yarn build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@reown/appkit": "^1.7.6",
+    "@reown/appkit-adapter-wagmi": "^1.7.6",
+    "@tanstack/react-query": "^5.76.2",
+    "@telegram-apps/sdk-react": "^3.3.0",
+    "@ton/core": "^0.60.1",
+    "@ton/crypto": "^3.3.0",
+    "@ton/ton": "^15.2.1",
+    "@tonconnect/ui-react": "^2.1.0",
+    "@wagmi/core": "^2.17.2",
+    "viem": "^2.30.0",
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vite-plugin-node-polyfills": "^0.23.0",
+    "wagmi": "^2.15.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.5.0",
+    "@eslint/js": "9.13.0",
+    "@tailwindcss/forms": "0.5.9",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.3",
+    "autoprefixer": "10.4.20",
+    "eslint": "9.13.0",
+    "eslint-plugin-react-hooks": "5.0.0",
+    "eslint-plugin-react-refresh": "0.4.14",
+    "lint-staged": "15.2.10",
+    "postcss": "8.4.47",
+    "prettier": "3.3.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.10.0",
+    "vite": "5.4.10",
+    "vite-preset-react": "2.3.0"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

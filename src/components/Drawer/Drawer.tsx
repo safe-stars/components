@@ -1,4 +1,4 @@
-import './styles.css';
+import styles from './styles.module.css';
 
 type DrawerProps = {
   isOpen: boolean;
@@ -15,18 +15,18 @@ const Drawer = ({
 }: DrawerProps) => {
   return (
     <>
-      <div className={`drawer-overlay ${isOpen ? 'visible' : ''}`} onClick={onClose} />
+      <div className={`${styles['drawer-overlay']} ${isOpen ? styles['visible'] : ''}`} onClick={onClose} />
       <div 
-        className={`drawer ${isOpen ? 'open' : ''}`}
+        className={`${styles['drawer']} ${isOpen ? styles['open'] : ''}`}
         style={{
           transform: isOpen ? undefined : 'translateY(100%)',
         }}
       >
-        <header className="drawer-header">
-          {title && <h2 className="drawer-title">{title}</h2>}
-          <button className="drawer-close" onClick={onClose}>×</button>
+        <header className={styles["drawer-header"]}>
+          {title && <h2 className={styles["drawer-title"]}>{title}</h2>}
+          <button className={styles["drawer-close"]} onClick={onClose}>×</button>
         </header>
-        <div className="drawer-body">
+        <div className={styles["drawer-body"]}>
           {children}
         </div>
       </div>

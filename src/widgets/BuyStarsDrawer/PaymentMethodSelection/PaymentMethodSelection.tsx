@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Spinner } from '../../../components';
 import { getPrice } from '../../../api/getPrice';
 import { verifyRecipient } from '../../../api/verifyRecipient';
-import { Coin } from '../../../types';
+import { Coin, ComponentsCustomStyles, ButtonCustomProps, SpinnerCustomProps } from '../../../types';
 import cn from 'classnames';
 import { useSafeStarsConfig } from '../SafeStarsContext';
 import sbpImage from '../../../assets/sbp.png';
@@ -21,6 +21,7 @@ type PaymentMethodSelectionProps = {
   onBack: () => void;
   onContinue: () => void;
   skipFirstStep: boolean;
+  components_custom_styles?: ComponentsCustomStyles;
 };
 
 const PaymentMethodSelection = ({
@@ -30,8 +31,16 @@ const PaymentMethodSelection = ({
   setAmount,
   onBack,
   onContinue,
-  skipFirstStep
+  skipFirstStep,
+  components_custom_styles
 }: PaymentMethodSelectionProps) => {
+  const Button_custom = (props: ButtonCustomProps) => (
+    <Button {...props} custom_styles={components_custom_styles?.Button} />
+  );
+  const Spinner_custom = (props: SpinnerCustomProps) => (
+    <Spinner {...props} custom_styles={components_custom_styles?.Spinner} />
+  );
+
   const [price, setPrice] = useState<number | null>(null);
   const [cryptoPrice, setCryptoPrice] = useState<number | null>(null);
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -87,7 +96,7 @@ const PaymentMethodSelection = ({
 
       {status === 'loading' && (
         <div className="mb-8 flex justify-center items-center flex-1">
-          <Spinner />
+          <Spinner_custom />
         </div>
       )}
       {status === 'error' && (
@@ -157,9 +166,9 @@ const PaymentMethodSelection = ({
 
           {skipFirstStep && (
             <div className="w-full mt-6 flex justify-center">
-              <Button variant="secondary" onClick={onBack} size="lg">
+              <Button_custom variant="secondary" onClick={onBack} size="lg">
                 Выбрать другую сумму
-              </Button>
+              </Button_custom>
             </div>
           )}
         </div>
@@ -174,16 +183,16 @@ const PaymentMethodSelection = ({
         )}
       >
         {!skipFirstStep && (
-          <Button variant="secondary" onClick={onBack}>
+          <Button_custom variant="secondary" onClick={onBack}>
             Назад
-          </Button>
+          </Button_custom>
         )}
-        <Button
+        <Button_custom
           onClick={handleContinue}
           disabled={!paymentMethod && status === 'success'}
         >
           Продолжить
-        </Button>
+        </Button_custom>
       </div>
     </div>
   );

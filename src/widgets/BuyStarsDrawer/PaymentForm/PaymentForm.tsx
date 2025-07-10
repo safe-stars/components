@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Spinner } from '../../../components';
 import { makeDeposit } from '../../../api/makeDeposit';
-import { Coin, COINS } from '../../../types';
+import { Coin, COINS, ComponentsCustomStyles, ButtonCustomProps, SpinnerCustomProps } from '../../../types';
 import TonPayment from '../PaymentMethodSelection/TonPayment/TonPayment';
 import { Payment } from '../../../types';
 import EthPayment from '../PaymentMethodSelection/EthPayment/EthPayment';
@@ -20,6 +20,7 @@ type PaymentMethodSelectionProps = {
   cryptoDeposit: Payment | null;
   setDepositUrl: (url: string | null) => void;
   setCryptoDeposit: (deposit: Payment | null) => void;
+  components_custom_styles?: ComponentsCustomStyles;
 };
 
 const PaymentForm = ({
@@ -31,8 +32,17 @@ const PaymentForm = ({
   depositUrl,
   cryptoDeposit,
   setDepositUrl,
-  setCryptoDeposit
+  setCryptoDeposit,
+  components_custom_styles
 }: PaymentMethodSelectionProps) => {
+  // Переопределяем компоненты с применением кастомных стилей (короткий синтаксис)
+  const Button_custom = (props: ButtonCustomProps) => (
+    <Button {...props} custom_styles={components_custom_styles?.Button} />
+  );
+  const Spinner_custom = (props: SpinnerCustomProps) => (
+    <Spinner {...props} custom_styles={components_custom_styles?.Spinner} />
+  );
+
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [copied, setCopied] = useState<'address' | 'amount' | null>(null);
   const [paymentStatus, setPaymentStatus] = useState<string | null>(null);
@@ -114,7 +124,7 @@ const PaymentForm = ({
 
       {status === 'loading' && (
         <div className="mb-8 flex justify-center items-center">
-          <Spinner />
+          <Spinner_custom />
         </div>
       )}
       {status === 'error' && (
@@ -136,14 +146,14 @@ const PaymentForm = ({
                   sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-top-navigation"
                 />
               </div>
-              <Button
+              <Button_custom
                 variant="secondary"
                 onClick={() => window.open(depositUrl, '_blank', 'noopener,noreferrer')}
                 size="sm"
                 className="mx-auto"
               >
                 Открыть в новой вкладке
-              </Button>
+              </Button_custom>
             </div>
           )}
           {cryptoDeposit && paymentMethod && COINS.includes(paymentMethod) && (
@@ -169,11 +179,21 @@ const PaymentForm = ({
               </div>
 
               {networkName === 'TON' && (
-                <TonPayment cryptoDeposit={cryptoDeposit} paymentStatus={cryptoPaymentStatus} setPaymentStatus={setCryptoPaymentStatus} />
+                <TonPayment 
+                  cryptoDeposit={cryptoDeposit} 
+                  paymentStatus={cryptoPaymentStatus} 
+                  setPaymentStatus={setCryptoPaymentStatus}
+                  components_custom_styles={components_custom_styles}
+                />
               )}
 
               {networkName === 'arbitrum' && (
-                <EthPayment cryptoDeposit={cryptoDeposit} paymentStatus={cryptoPaymentStatus} setPaymentStatus={setCryptoPaymentStatus} />
+                <EthPayment 
+                  cryptoDeposit={cryptoDeposit} 
+                  paymentStatus={cryptoPaymentStatus} 
+                  setPaymentStatus={setCryptoPaymentStatus}
+                  components_custom_styles={components_custom_styles}
+                />
               )}
             </div>
           )}
@@ -182,15 +202,15 @@ const PaymentForm = ({
 
       {onBack && onContinue && (
         <div className="flex justify-between mt-auto">
-          <Button variant="secondary" onClick={onBack}>
+          <Button_custom variant="secondary" onClick={onBack}>
             Назад
-          </Button>
-          <Button
+          </Button_custom>
+          <Button_custom
             onClick={handleContinue}
             disabled={(status !== 'success' || !paymentStatus) && cryptoPaymentStatus !== 'success'}
           >
             Готово
-          </Button>
+          </Button_custom>
         </div>
       )}
     </div>

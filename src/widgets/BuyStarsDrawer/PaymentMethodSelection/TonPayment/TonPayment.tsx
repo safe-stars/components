@@ -4,18 +4,25 @@ import { useEffect, useState } from "react";
 import { Button } from "../../../../components";
 import { getUsdtJettonWallet } from "../../../../utils/getUsdtJettonWallet";
 import { useSafeStarsConfig } from "../../SafeStarsContext";
+import { ComponentsCustomStyles, ButtonCustomProps } from "../../../../types";
 
 type TonPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
   paymentStatus: 'init' | 'loading' | 'success' | 'error';
   setPaymentStatus: (status: 'init' | 'loading' | 'success' | 'error') => void;
+  components_custom_styles?: ComponentsCustomStyles;
 };
 
 export default function TonPayment({
   cryptoDeposit,
   paymentStatus: status,
-  setPaymentStatus: setStatus
+  setPaymentStatus: setStatus,
+  components_custom_styles
 }: TonPaymentProps) {
+  const Button_custom = (props: ButtonCustomProps) => (
+    <Button {...props} custom_styles={components_custom_styles?.Button} />
+  );
+
   const [tonConnectUI] = useTonConnectUI();
   const tonWallet = useTonWallet();
   const [isConnected, setIsConnected] = useState(false);
@@ -87,13 +94,13 @@ export default function TonPayment({
       <p>Подлючите кошелек чтобы оплатить напрямую</p>
       <TonConnectButton />
       <div className="send-payment-container">
-        <Button
+        <Button_custom
           className="send-payment-button"
           onClick={sendPayment}
           disabled={status === 'loading' || status === 'success' || !isConnected}
         >
           {status === 'loading' ? 'Отправка...' : status === 'success' ? 'Оплачено' : `Отправить ${cryptoDeposit.amount} USDT`}
-        </Button>
+        </Button_custom>
       </div>
     </div>
   );

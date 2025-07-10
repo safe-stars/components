@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
-import { SafeStarsProvider } from "./widgets";
+import { SafeStarsProvider, BuyStarsButton } from "./widgets";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
 import './index.css';
 
@@ -12,6 +12,7 @@ mockTelegramEnv({
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    
     <SafeStarsProvider 
       config={{
         tonCenterApiKey: import.meta.env.VITE_TON_API_KEY,

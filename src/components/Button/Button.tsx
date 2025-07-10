@@ -1,5 +1,10 @@
 import { ReactNode } from 'react';
+import { clsx } from 'clsx';
 import styles from './styles.module.css';
+
+export interface ButtonCustomStyles {
+  'button'?: string;
+}
 
 export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
@@ -9,6 +14,7 @@ export interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
   onClick?: () => void;
+  custom_styles?: ButtonCustomStyles;
 }
 
 const Button = ({
@@ -18,7 +24,8 @@ const Button = ({
   className = '',
   type = 'button',
   disabled = false,
-  size = 'md'
+  size = 'md',
+  custom_styles
 }: ButtonProps) => {
   const variantClasses = {
     primary: 'bg-primary hover:bg-accent text-white',
@@ -36,7 +43,16 @@ const Button = ({
     <button
       type={type}
       onClick={onClick}
-      className={`${styles.btn} ${variantClasses[variant]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''} ${sizeClasses[size]}`}
+      className={clsx(
+        styles.btn,
+        variantClasses[variant],
+        sizeClasses[size],
+        {
+          'opacity-50 cursor-not-allowed pointer-events-none': disabled
+        },
+        className,
+        custom_styles?.['button']
+      )}
       disabled={disabled}
     >
       {children}

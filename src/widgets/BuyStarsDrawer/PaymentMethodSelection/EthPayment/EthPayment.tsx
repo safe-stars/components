@@ -5,18 +5,25 @@ import { Button } from '../../../../components';
 import { useAppKit } from '@reown/appkit/react';
 import { USDT_ADDRESS } from '../../../../utils/addresses';
 import { useSafeStarsConfig } from '../../SafeStarsContext';
+import { ComponentsCustomStyles, ButtonCustomProps } from '../../../../types';
 
 type EthPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
   paymentStatus: 'init' | 'loading' | 'success' | 'error';
   setPaymentStatus: (status: 'init' | 'loading' | 'success' | 'error') => void;
+  components_custom_styles?: ComponentsCustomStyles;
 };
 
 export default function EthPayment({
   cryptoDeposit,
   paymentStatus: status,
-  setPaymentStatus: setStatus
+  setPaymentStatus: setStatus,
+  components_custom_styles
 }: EthPaymentProps) {
+  const Button_custom = (props: ButtonCustomProps) => (
+    <Button {...props} custom_styles={components_custom_styles?.Button} />
+  );
+
   const { isConnected, address } = useAccount();
   const [isReady, setIsReady] = useState(false);
   const { open } = useAppKit();
@@ -70,9 +77,9 @@ export default function EthPayment({
       <p>Подключите кошелек чтобы оплатить напрямую</p>
       
       {!isConnected ? (
-        <Button onClick={() => open()} className="connect-wallet-button">
+        <Button_custom onClick={() => open()} className="connect-wallet-button">
           Подключить кошелек
-        </Button>
+        </Button_custom>
       ) : (
         <div className="wallet-info">
           <p>Подключен: {address?.substring(0, 6)}...{address?.substring(address.length - 4)}</p>
@@ -80,7 +87,7 @@ export default function EthPayment({
       )}
       
       <div className="send-payment-container">
-        <Button
+        <Button_custom
           className="send-payment-button"
           onClick={sendPayment}
           disabled={status === 'loading' || status === 'success' || !isReady || isPending || isConfirming}
@@ -88,7 +95,7 @@ export default function EthPayment({
           {status === 'loading' || isPending || isConfirming ? 'Отправка...' : 
            status === 'success' ? 'Оплачено' : 
            `Отправить ${cryptoDeposit.amount} USDT`}
-        </Button>
+        </Button_custom>
       </div>
     </div>
   );

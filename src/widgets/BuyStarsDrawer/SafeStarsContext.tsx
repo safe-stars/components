@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { BuyStarsDrawer } from '.';
+import { BuyStarsDrawer, ComponentsCustomStyles } from '.';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { AppKitProvider } from '../../utils/AppKitProvider';
 import { useLaunchParams } from '@telegram-apps/sdk-react';
@@ -30,7 +30,8 @@ export type BuyStarsData = {
 export const SafeStarsProvider: React.FC<{ 
   children: React.ReactNode;
   config?: SafeStarsConfig;
-}> = ({ children, config = {} }) => {
+  components_custom_styles?: ComponentsCustomStyles;
+}> = ({ children, config = {}, components_custom_styles }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [skipFirstStep, setSkipFirstStep] = useState(false);
   const launchParams = useLaunchParams();
@@ -73,6 +74,7 @@ export const SafeStarsProvider: React.FC<{
               formData={formData}
               setFormData={setFormData}
               skipFirstStep={skipFirstStep}
+              components_custom_styles={components_custom_styles}
             />
           </SafeStarsContext.Provider>
         </TonConnectUIProvider>

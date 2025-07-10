@@ -1,9 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./app";
 import { SafeStarsProvider } from "./widgets";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
 import './index.css';
+import { BuyStarsButton } from "./widgets";
+
+export default function SampleApp() {
+
+  return (
+    <div className="p-4 bg-background h-screen">
+      <h1 className="text-h1 text-fg mb-4 break-all">@buy-stars/components</h1>
+      
+      <div className="flex gap-4 flex-wrap">
+        <BuyStarsButton />
+        <BuyStarsButton stars={100} components_custom_styles={{
+          "Button": {
+            'button': 'bg-red-500',
+          },
+        }} />
+        <BuyStarsButton stars={500} components_custom_styles={{
+          "Button": {
+            'button': 'bg-red-500',
+          },
+        }} />
+      </div>
+    </div>
+  );
+}
 
 mockTelegramEnv({
   launchParams:
@@ -16,9 +39,19 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       config={{
         tonCenterApiKey: import.meta.env.VITE_TON_API_KEY,
         alchemyApiKey: import.meta.env.VITE_ALCHEMY_API_KEY
+      }} components_custom_styles={{
+        "Button": {
+          'button': 'bg-red-500',
+        },
+        "Drawer": {
+          'drawer': 'bg-blue-500',
+        },
+        "Spinner": {
+          'spinner': 'bg-green-500',
+        }
       }}
     >
-      <App />
+      <SampleApp />
     </SafeStarsProvider>
   </React.StrictMode>,
-);
+);  

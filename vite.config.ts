@@ -49,6 +49,10 @@ export default defineConfig(() => {
       cssCodeSplit: false,
     },
     css: {
+      modules: {
+        localsConvention: 'camelCase',
+        generateScopedName: '[name]__[local]___[hash:base64:5]'
+      },
       postcss: {
         plugins: [
           tailwindcss,

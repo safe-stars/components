@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import './styles.css';
+import styles from './styles.module.css';
 
 export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
@@ -36,7 +36,7 @@ const Button = ({
     <button
       type={type}
       onClick={onClick}
-      className={`btn ${variantClasses[variant]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''} ${sizeClasses[size]}`}
+      className={`${styles.btn} ${variantClasses[variant]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''} ${sizeClasses[size]}`}
       disabled={disabled}
     >
       {children}

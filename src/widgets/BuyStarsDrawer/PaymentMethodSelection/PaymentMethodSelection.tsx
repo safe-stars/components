@@ -48,7 +48,7 @@ const PaymentMethodSelection = ({
 
   const hasTonPayment = !!config.tonCenterApiKey;
   const hasArbitrumPayment = !!config.alchemyApiKey;
-  const markUp = config.markUp ?? 1;
+  const markUp = config.markUp ?? 0;
   useEffect(() => {
     const fetchPrice = async () => {
       const rubPrice = await getPrice({ amount: userData.starsCount, currency: 'RUB' });
@@ -61,10 +61,10 @@ const PaymentMethodSelection = ({
         setPrice(rubPrice?.price ?? null);
         setCryptoPrice(usdtPrice?.price ?? null);
         if (price) {
-          setPrice(price * markUp);
+          setPrice(price * (1 + markUp));
         }
         if (cryptoPrice) {
-          setCryptoPrice(cryptoPrice * markUp);
+          setCryptoPrice(cryptoPrice * (1 + markUp));
         }
       } else {
         setStatus('error');

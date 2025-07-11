@@ -7,6 +7,7 @@ import { useLaunchParams } from '@telegram-apps/sdk-react';
 export interface SafeStarsConfig {
   tonCenterApiKey?: string;
   alchemyApiKey?: string;
+  markUp?: number;
 }
 
 interface SafeStarsContextType {

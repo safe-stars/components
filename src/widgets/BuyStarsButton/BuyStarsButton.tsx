@@ -1,12 +1,12 @@
 import { ButtonProps } from "components/Button/Button";
 import { Button } from "../../components";
 import { useSafeStars } from "../BuyStarsDrawer";
-import { ComponentsCustomStyles, ButtonCustomProps } from "../../types";
+import { CustomStyles, ButtonCustomProps } from "../../types";
 
 type BuyStarsButtonProps = {
   stars?: number;
   children?: React.ReactNode;
-  classes?: ComponentsCustomStyles;
+  classes?: CustomStyles;
 } & Pick<ButtonProps, 'className' | 'variant'>;
 
 const BuyStarsButton = ({ 

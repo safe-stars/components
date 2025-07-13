@@ -11,20 +11,14 @@ mockTelegramEnv({
 
 // Демонстрационные кастомные стили для всего приложения
 const globalCustomStyles = {
-  Button: {
-    'button': 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-white/30'
-  },
-  Drawer: {
-    'drawer-overlay': 'bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-pink-900/80 backdrop-blur-lg',
-    'drawer': 'bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-800 border-t-4 border-gradient-to-r from-indigo-400 to-pink-400 shadow-2xl',
-    'drawer-header': 'bg-gradient-to-r from-indigo-700 to-purple-700 border-b-2 border-indigo-400 backdrop-blur-sm',
-    'drawer-title': 'text-white font-bold text-xl bg-gradient-to-r from-indigo-200 to-pink-200 bg-clip-text text-transparent drop-shadow-lg',
-    'drawer-close': 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-full shadow-lg hover:shadow-red-500/25 transition-all duration-300',
-    'drawer-body': 'bg-gradient-to-br from-indigo-800/30 to-pink-800/30 backdrop-blur-sm'
-  },
-  Spinner: {
-    'spinner': 'border-indigo-500 border-t-pink-500 w-10 h-10 animate-spin drop-shadow-lg'
-  }
+  Button: 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-white/30',
+  DrawerOverlay: 'bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-pink-900/80 backdrop-blur-lg',
+  Drawer: 'bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-800 border-t-4 border-gradient-to-r from-indigo-400 to-pink-400 shadow-2xl',
+  DrawerHeader: 'bg-gradient-to-r from-indigo-700 to-purple-700 border-b-2 border-indigo-400 backdrop-blur-sm',
+  DrawerTitle: 'text-white font-bold text-xl bg-gradient-to-r from-indigo-200 to-pink-200 bg-clip-text text-transparent drop-shadow-lg',
+  DrawerClose: 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-full shadow-lg hover:shadow-red-500/25 transition-all duration-300',
+  DrawerBody: 'bg-gradient-to-br from-indigo-800/30 to-pink-800/30 backdrop-blur-sm',
+  Spinner: 'border-indigo-500 border-t-pink-500 w-10 h-10 animate-spin drop-shadow-lg'
 };
 
 // Демонстрационный компонент для тестирования
@@ -91,7 +85,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         tonCenterApiKey: import.meta.env.VITE_TON_API_KEY,
         alchemyApiKey: import.meta.env.VITE_ALCHEMY_API_KEY
       }}
-      components_custom_styles={globalCustomStyles}
+      classes={globalCustomStyles}
     >
       <CustomStylesDemo />
     </SafeStarsProvider>

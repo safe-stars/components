@@ -2,7 +2,7 @@ export { SafeStarsProvider, useSafeStars, type SafeStarsConfig } from './SafeSta
 export { default as BuyStarsDrawer } from './BuyStarsDrawer';
 
 export type { 
-  ComponentsCustomStyles,
+  CustomStyles,
   ButtonCustomProps,
   DrawerCustomProps,
   SpinnerCustomProps 

@@ -4,7 +4,7 @@ import PaymentMethodSelection from './PaymentMethodSelection/PaymentMethodSelect
 import PaymentForm from './PaymentForm/PaymentForm';
 import SuccessModal from './SuccessModal/SuccessModal';
 import { Drawer } from '../../components';
-import { Coin, Payment, ComponentsCustomStyles, DrawerCustomProps } from '../../types';
+import { Coin, Payment, CustomStyles, DrawerCustomProps } from '../../types';
 import { BuyStarsData } from './SafeStarsContext';
 
 type BuyStarsDrawerProps = {
@@ -13,7 +13,7 @@ type BuyStarsDrawerProps = {
   isOpen: boolean;
   onClose: () => void;
   skipFirstStep: boolean;
-  classes?: ComponentsCustomStyles;
+  classes?: CustomStyles;
 };
 
 type Step = 'form' | 'payment-method' | 'payment' | 'success';

@@ -5,13 +5,13 @@ import { Button } from '../../../../components';
 import { useAppKit } from '@reown/appkit/react';
 import { USDT_ADDRESS } from '../../../../utils/addresses';
 import { useSafeStarsConfig } from '../../SafeStarsContext';
-import { ComponentsCustomStyles, ButtonCustomProps } from '../../../../types';
+import { CustomStyles, ButtonCustomProps } from '../../../../types';
 
 type EthPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
   paymentStatus: 'init' | 'loading' | 'success' | 'error';
   setPaymentStatus: (status: 'init' | 'loading' | 'success' | 'error') => void;
-  classes?: ComponentsCustomStyles;
+  classes?: CustomStyles;
 };
 
 export default function EthPayment({

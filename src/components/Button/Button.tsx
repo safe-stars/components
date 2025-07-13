@@ -1,10 +1,7 @@
 import { ReactNode } from 'react';
 import { clsx } from 'clsx';
 import styles from './styles.module.css';
-
-export interface ButtonCustomStyles {
-  'button'?: string;
-}
+import {ButtonCustomStyles} from '../../types'
 
 export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
@@ -51,7 +48,7 @@ const Button = ({
           'opacity-50 cursor-not-allowed pointer-events-none': disabled
         },
         className,
-        classes?.['button']
+        classes?.Button
       )}
       disabled={disabled}
     >

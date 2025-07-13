@@ -21,54 +21,36 @@ const CustomStylesDemo = () => {
 
   // Различные наборы кастомных стилей
   const gradientStyles = {
-    Button: {
-      'button': 'bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-white/20'
-    },
-    Drawer: {
-      'drawer-overlay': 'bg-gradient-to-br from-purple-900/80 via-pink-900/80 to-red-900/80 backdrop-blur-md',
-      'drawer': 'bg-gradient-to-br from-purple-900 via-pink-800 to-red-800 border-t-4 border-gradient-to-r from-purple-400 to-pink-400',
-      'drawer-header': 'bg-gradient-to-r from-purple-700 to-pink-700 border-b-2 border-purple-400',
-      'drawer-title': 'text-white font-bold text-2xl bg-gradient-to-r from-purple-200 to-pink-200 bg-clip-text text-transparent',
-      'drawer-close': 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-full',
-      'drawer-body': 'bg-gradient-to-br from-purple-800/50 to-pink-800/50'
-    },
-    Spinner: {
-      'spinner': 'border-purple-500 border-t-pink-500 w-12 h-12 animate-spin'
-    }
+    Button: 'bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 hover:from-purple-600 hover:via-pink-600 hover:to-red-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-white/20',
+    DrawerOverlay: 'bg-gradient-to-br from-purple-900/80 via-pink-900/80 to-red-900/80 backdrop-blur-md',
+    Drawer: 'bg-gradient-to-br from-purple-900 via-pink-800 to-red-800 border-t-4 border-gradient-to-r from-purple-400 to-pink-400',
+    DrawerHeader: 'bg-gradient-to-r from-purple-700 to-pink-700 border-b-2 border-purple-400',
+    DrawerTitle: 'text-white font-bold text-2xl bg-gradient-to-r from-purple-200 to-pink-200 bg-clip-text text-transparent',
+    DrawerClose: 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-full',
+    DrawerBody: 'bg-gradient-to-br from-purple-800/50 to-pink-800/50',
+    Spinner: 'border-purple-500 border-t-pink-500 w-12 h-12 animate-spin'
   };
 
   const neonStyles = {
-    Button: {
-      'button': 'bg-black border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold py-3 px-6 rounded-lg shadow-lg shadow-cyan-400/50 hover:shadow-cyan-400/80 transition-all duration-300 hover:scale-105'
-    },
-    Drawer: {
-      'drawer-overlay': 'bg-black/90 backdrop-blur-sm',
-      'drawer': 'bg-black border-t-4 border-cyan-400 shadow-lg shadow-cyan-400/50',
-      'drawer-header': 'bg-gray-900 border-b-2 border-cyan-400',
-      'drawer-title': 'text-cyan-400 font-bold text-xl font-mono tracking-wider',
-      'drawer-close': 'bg-red-600 hover:bg-red-500 text-white border border-red-400 rounded-md',
-      'drawer-body': 'bg-gray-900/50'
-    },
-    Spinner: {
-      'spinner': 'border-cyan-400 border-t-transparent w-10 h-10'
-    }
+    Button: 'bg-black border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-bold py-3 px-6 rounded-lg shadow-lg shadow-cyan-400/50 hover:shadow-cyan-400/80 transition-all duration-300 hover:scale-105',
+    DrawerOverlay: 'bg-black/90 backdrop-blur-sm',
+    Drawer: 'bg-black border-t-4 border-cyan-400 shadow-lg shadow-cyan-400/50',
+    DrawerHeader: 'bg-gray-900 border-b-2 border-cyan-400',
+    DrawerTitle: 'text-cyan-400 font-bold text-xl font-mono tracking-wider',
+    DrawerClose: 'bg-red-600 hover:bg-red-500 text-white border border-red-400 rounded-md',
+    DrawerBody: 'bg-gray-900/50',
+    Spinner: 'border-cyan-400 border-t-transparent w-10 h-10'
   };
 
   const retro8bitStyles = {
-    Button: {
-      'button': 'bg-yellow-400 border-4 border-black text-black hover:bg-yellow-300 font-black py-2 px-4 transform hover:translate-x-1 hover:translate-y-1 transition-transform duration-75 shadow-lg shadow-black/50'
-    },
-    Drawer: {
-      'drawer-overlay': 'bg-green-900/95',
-      'drawer': 'bg-green-200 border-8 border-black',
-      'drawer-header': 'bg-blue-500 border-b-4 border-black',
-      'drawer-title': 'text-white font-black text-lg font-mono uppercase tracking-widest',
-      'drawer-close': 'bg-red-500 hover:bg-red-400 text-white border-2 border-black font-black',
-      'drawer-body': 'bg-white border-4 border-black'
-    },
-    Spinner: {
-      'spinner': 'border-black border-t-yellow-400 w-8 h-8 border-4'
-    }
+    Button: 'bg-yellow-400 border-4 border-black text-black hover:bg-yellow-300 font-black py-2 px-4 transform hover:translate-x-1 hover:translate-y-1 transition-transform duration-75 shadow-lg shadow-black/50',
+    DrawerOverlay: 'bg-green-900/95',
+    Drawer: 'bg-green-200 border-8 border-black',
+    DrawerHeader: 'bg-blue-500 border-b-4 border-black',
+    DrawerTitle: 'text-white font-black text-lg font-mono uppercase tracking-widest',
+    DrawerClose: 'bg-red-500 hover:bg-red-400 text-white border-2 border-black font-black',
+    DrawerBody: 'bg-white border-4 border-black',
+    Spinner: 'border-black border-t-yellow-400 w-8 h-8 border-4'
   };
 
   const getCurrentStyles = () => {
@@ -132,10 +114,10 @@ const CustomStylesDemo = () => {
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-white font-semibold mb-4">Gradient Components</h3>
               <div className="space-y-4">
-                <Button classes={gradientStyles.Button}>
+                <Button classes={{ Button: gradientStyles.Button }}>
                   Gradient Button
                 </Button>
-                <Spinner classes={gradientStyles.Spinner} />
+                <Spinner classes={{ Spinner: gradientStyles.Spinner }} />
               </div>
             </div>
 
@@ -143,10 +125,10 @@ const CustomStylesDemo = () => {
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-white font-semibold mb-4">Neon Components</h3>
               <div className="space-y-4">
-                <Button classes={neonStyles.Button}>
+                <Button classes={{ Button: neonStyles.Button }}>
                   Neon Button
                 </Button>
-                <Spinner classes={neonStyles.Spinner} />
+                <Spinner classes={{ Spinner: neonStyles.Spinner }} />
               </div>
             </div>
 
@@ -154,10 +136,10 @@ const CustomStylesDemo = () => {
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-white font-semibold mb-4">Retro Components</h3>
               <div className="space-y-4">
-                <Button classes={retro8bitStyles.Button}>
+                <Button classes={{ Button: retro8bitStyles.Button }}>
                   RETRO BUTTON
                 </Button>
-                <Spinner classes={retro8bitStyles.Spinner} />
+                <Spinner classes={{ Spinner: retro8bitStyles.Spinner }} />
               </div>
             </div>
           </div>
@@ -172,7 +154,7 @@ const CustomStylesDemo = () => {
                 setDrawerType('gradient');
                 setIsDrawerOpen(true);
               }}
-              classes={gradientStyles.Button}
+              classes={{ Button: gradientStyles.Button }}
             >
               Open Gradient Drawer
             </Button>
@@ -182,7 +164,7 @@ const CustomStylesDemo = () => {
                 setDrawerType('neon');
                 setIsDrawerOpen(true);
               }}
-              classes={neonStyles.Button}
+              classes={{ Button: neonStyles.Button }}
             >
               Open Neon Drawer
             </Button>
@@ -192,7 +174,7 @@ const CustomStylesDemo = () => {
                 setDrawerType('default');
                 setIsDrawerOpen(true);
               }}
-              classes={retro8bitStyles.Button}
+              classes={{ Button: retro8bitStyles.Button }}
             >
               OPEN RETRO DRAWER
             </Button>

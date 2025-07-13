@@ -1,5 +1,5 @@
 import { Button } from "../../../components";
-import { ComponentsCustomStyles, ButtonCustomProps } from "../../../types";
+import { CustomStyles, ButtonCustomProps } from "../../../types";
 
 type SuccessModalProps = {
   userData: {
@@ -8,7 +8,7 @@ type SuccessModalProps = {
   };
   onClose: () => void;
   onBack: () => void;
-  classes?: ComponentsCustomStyles;
+  classes?: CustomStyles;
 };
 
 const SuccessModal = ({ 

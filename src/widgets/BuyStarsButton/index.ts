@@ -1,7 +1,7 @@
 export { default as BuyStarsButton } from './BuyStarsButton';
 
 export type { 
-  ComponentsCustomStyles,
+  CustomStyles,
   ButtonCustomProps,
   DrawerCustomProps,
   SpinnerCustomProps 

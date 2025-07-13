@@ -1,14 +1,6 @@
 import { clsx } from 'clsx';
 import styles from './styles.module.css';
-
-export interface DrawerCustomStyles {
-  'drawer-overlay'?: string;
-  'drawer'?: string;
-  'drawer-header'?: string;
-  'drawer-title'?: string;
-  'drawer-close'?: string;
-  'drawer-body'?: string;
-}
+import {DrawerCustomStyles} from '../../types'
 
 export interface DrawerProps {
   isOpen: boolean;
@@ -31,7 +23,7 @@ const Drawer = ({
         className={clsx(
           styles.drawerOverlay,
           isOpen && styles.visible,
-          classes?.['drawer-overlay']
+          classes?.DrawerOverlay
         )} 
         onClick={onClose} 
       />
@@ -39,7 +31,7 @@ const Drawer = ({
         className={clsx(
           styles.drawer,
           isOpen && styles.open,
-          classes?.['drawer']
+          classes?.Drawer
         )}
         style={{
           transform: isOpen ? undefined : 'translateY(100%)',
@@ -47,12 +39,12 @@ const Drawer = ({
       >
         <header className={clsx(
           styles.drawerHeader,
-          classes?.['drawer-header']
+          classes?.DrawerHeader
         )}>
           {title && (
             <h2 className={clsx(
               styles.drawerTitle,
-              classes?.['drawer-title']
+              classes?.DrawerTitle
             )}>
               {title}
             </h2>
@@ -60,8 +52,8 @@ const Drawer = ({
           <button 
             className={clsx(
               styles.drawerClose,
-              classes?.['drawer-close']
-            )} 
+              classes?.DrawerClose
+            )}  
             onClick={onClose}
           >
             ×
@@ -69,7 +61,7 @@ const Drawer = ({
         </header>
         <div className={clsx(
           styles.drawerBody,
-          classes?.['drawer-body']
+          classes?.DrawerBody
         )}>
           {children}
         </div>

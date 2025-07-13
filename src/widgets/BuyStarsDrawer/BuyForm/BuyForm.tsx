@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../../../components';
-import { ComponentsCustomStyles, ButtonCustomProps } from '../../../types';
+import { CustomStyles, ButtonCustomProps } from '../../../types';
 
 type BuyFormProps = {
   formData: {
@@ -9,7 +9,7 @@ type BuyFormProps = {
   };
   setFormData: (data: { username: string; starsCount: number }) => void;
   onContinue: () => void;
-  classes?: ComponentsCustomStyles;
+  classes?: CustomStyles;
 };
 
 const BuyForm = ({ 

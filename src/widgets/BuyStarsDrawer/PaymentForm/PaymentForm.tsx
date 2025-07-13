@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Spinner } from '../../../components';
 import { makeDeposit } from '../../../api/makeDeposit';
-import { Coin, COINS, ComponentsCustomStyles, ButtonCustomProps, SpinnerCustomProps } from '../../../types';
+import { Coin, COINS, CustomStyles, ButtonCustomProps, SpinnerCustomProps } from '../../../types';
 import TonPayment from '../PaymentMethodSelection/TonPayment/TonPayment';
 import { Payment } from '../../../types';
 import EthPayment from '../PaymentMethodSelection/EthPayment/EthPayment';
@@ -20,7 +20,7 @@ type PaymentMethodSelectionProps = {
   cryptoDeposit: Payment | null;
   setDepositUrl: (url: string | null) => void;
   setCryptoDeposit: (deposit: Payment | null) => void;
-  classes?: ComponentsCustomStyles;
+  classes?: CustomStyles;
 };
 
 const PaymentForm = ({

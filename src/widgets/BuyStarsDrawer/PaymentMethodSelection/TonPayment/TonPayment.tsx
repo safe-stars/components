@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { Button } from "../../../../components";
 import { getUsdtJettonWallet } from "../../../../utils/getUsdtJettonWallet";
 import { useSafeStarsConfig } from "../../SafeStarsContext";
-import { ComponentsCustomStyles, ButtonCustomProps } from "../../../../types";
+import { CustomStyles, ButtonCustomProps } from "../../../../types";
 
 type TonPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
   paymentStatus: 'init' | 'loading' | 'success' | 'error';
   setPaymentStatus: (status: 'init' | 'loading' | 'success' | 'error') => void;
-  classes?: ComponentsCustomStyles;
+  classes?: CustomStyles;
 };
 
 export default function TonPayment({

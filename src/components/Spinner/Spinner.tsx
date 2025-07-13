@@ -1,9 +1,6 @@
 import { clsx } from 'clsx';
 import styles from './styles.module.css';
-
-export interface SpinnerCustomStyles {
-  'spinner'?: string;
-}
+import {SpinnerCustomStyles} from '../../types'
 
 export interface SpinnerProps {
   classes?: SpinnerCustomStyles;
@@ -13,7 +10,7 @@ const Spinner = ({ classes }: SpinnerProps) => {
     return (
         <div className={clsx(
             styles.loader,
-            classes?.['spinner']
+            classes?.Spinner
         )}></div>
     );
 };

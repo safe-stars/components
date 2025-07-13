@@ -14,14 +14,10 @@ export default function SampleApp() {
       <div className="flex gap-4 flex-wrap">
         <BuyStarsButton />
         <BuyStarsButton stars={100} classes={{
-          "Button": {
-            'button': 'bg-red-500',
-          },
+          Button: 'bg-red-500',
         }} />
         <BuyStarsButton stars={500} classes={{
-          "Button": {
-            'button': 'bg-red-500',
-          },
+          Button: 'bg-red-500',
         }} />
       </div>
     </div>
@@ -39,16 +35,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       config={{
         tonCenterApiKey: import.meta.env.VITE_TON_API_KEY,
         alchemyApiKey: import.meta.env.VITE_ALCHEMY_API_KEY
-      }} classes={{
-        "Button": {
-          'button': 'bg-red-500',
-        },
-        "Drawer": {
-          'drawer': 'bg-blue-500',
-        },
-        "Spinner": {
-          'spinner': 'bg-green-500',
-        }
+      }} 
+      classes={{
+        Button: 'bg-red-500',
+        Drawer: 'bg-blue-500',
+        Spinner: 'bg-green-500',
       }}
     >
       <SampleApp />

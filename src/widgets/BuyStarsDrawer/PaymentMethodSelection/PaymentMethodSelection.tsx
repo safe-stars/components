@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Spinner } from '../../../components';
 import { getPrice } from '../../../api/getPrice';
 import { verifyRecipient } from '../../../api/verifyRecipient';
-import { Coin, ComponentsCustomStyles, ButtonCustomProps, SpinnerCustomProps } from '../../../types';
+import { Coin, CustomStyles, ButtonCustomProps, SpinnerCustomProps } from '../../../types';
 import cn from 'classnames';
 import { useSafeStarsConfig } from '../SafeStarsContext';
 import sbpImage from '../../../assets/sbp.png';
@@ -21,7 +21,7 @@ type PaymentMethodSelectionProps = {
   onBack: () => void;
   onContinue: () => void;
   skipFirstStep: boolean;
-  classes?: ComponentsCustomStyles;
+  classes?: CustomStyles;
 };
 
 const PaymentMethodSelection = ({

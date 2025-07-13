@@ -37,10 +37,10 @@ const PaymentForm = ({
 }: PaymentMethodSelectionProps) => {
   // Переопределяем компоненты с применением кастомных стилей (короткий синтаксис)
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes?.Button} />
+    <Button {...props} classes={classes} />
   );
   const Spinner_custom = (props: SpinnerCustomProps) => (
-    <Spinner {...props} classes={classes?.Spinner} />
+    <Spinner {...props} classes={classes} />
   );
 
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');

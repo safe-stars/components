@@ -20,7 +20,7 @@ export default function TonPayment({
   classes
 }: TonPaymentProps) {
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes?.Button} />
+    <Button {...props} classes={classes} />
   );
 
   const [tonConnectUI] = useTonConnectUI();

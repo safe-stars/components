@@ -21,7 +21,7 @@ export default function EthPayment({
   classes
 }: EthPaymentProps) {
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes?.Button} />
+    <Button {...props} classes={classes} />
   );
 
   const { isConnected, address } = useAccount();

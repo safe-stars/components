@@ -29,7 +29,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
   } = props;
 
   const Drawer_custom = (props: DrawerCustomProps) => (
-    <Drawer {...props} classes={classes?.Drawer} />
+    <Drawer {...props} classes={classes} />
   );
 
   const [step, setStep] = useState<Step>('form');

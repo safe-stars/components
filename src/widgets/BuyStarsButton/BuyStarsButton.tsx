@@ -18,7 +18,7 @@ const BuyStarsButton = ({
   const { openDrawer } = useSafeStars();
 
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes?.Button} />
+    <Button {...props} classes={classes} />
   );
 
   if (stars && (stars < 50 || stars > 10000)) {

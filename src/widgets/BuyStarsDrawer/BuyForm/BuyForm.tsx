@@ -9,19 +9,19 @@ type BuyFormProps = {
   };
   setFormData: (data: { username: string; starsCount: number }) => void;
   onContinue: () => void;
-  components_custom_styles?: ComponentsCustomStyles;
+  classes?: ComponentsCustomStyles;
 };
 
 const BuyForm = ({ 
   formData, 
   setFormData, 
   onContinue,
-  components_custom_styles 
+  classes 
 }: BuyFormProps) => {
   const [errors, setErrors] = useState({ username: '', starsCount: '' });
 
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} custom_styles={components_custom_styles?.Button} />
+    <Button {...props} classes={classes?.Button} />
   );
 
   const validateForm = (): boolean => {

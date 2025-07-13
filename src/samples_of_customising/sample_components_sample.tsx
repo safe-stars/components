@@ -96,7 +96,7 @@ const CustomStylesDemo = () => {
               <h3 className="text-white font-semibold mb-4">Gradient Style</h3>
               <BuyStarsButton 
                 stars={100}
-                components_custom_styles={gradientStyles}
+                classes={gradientStyles}
               >
               </BuyStarsButton>
             </div>
@@ -106,7 +106,7 @@ const CustomStylesDemo = () => {
               <h3 className="text-white font-semibold mb-4">Neon Cyber Style</h3>
               <BuyStarsButton 
                 stars={250}
-                components_custom_styles={neonStyles}
+                classes={neonStyles}
               >
               </BuyStarsButton>
             </div>
@@ -116,7 +116,7 @@ const CustomStylesDemo = () => {
               <h3 className="text-white font-semibold mb-4">Retro 8-bit Style</h3>
               <BuyStarsButton 
                 stars={500}
-                components_custom_styles={retro8bitStyles}
+                classes={retro8bitStyles}
               >
               </BuyStarsButton>
             </div>
@@ -132,10 +132,10 @@ const CustomStylesDemo = () => {
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-white font-semibold mb-4">Gradient Components</h3>
               <div className="space-y-4">
-                <Button custom_styles={gradientStyles.Button}>
+                <Button classes={gradientStyles.Button}>
                   Gradient Button
                 </Button>
-                <Spinner custom_styles={gradientStyles.Spinner} />
+                <Spinner classes={gradientStyles.Spinner} />
               </div>
             </div>
 
@@ -143,10 +143,10 @@ const CustomStylesDemo = () => {
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-white font-semibold mb-4">Neon Components</h3>
               <div className="space-y-4">
-                <Button custom_styles={neonStyles.Button}>
+                <Button classes={neonStyles.Button}>
                   Neon Button
                 </Button>
-                <Spinner custom_styles={neonStyles.Spinner} />
+                <Spinner classes={neonStyles.Spinner} />
               </div>
             </div>
 
@@ -154,10 +154,10 @@ const CustomStylesDemo = () => {
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-white font-semibold mb-4">Retro Components</h3>
               <div className="space-y-4">
-                <Button custom_styles={retro8bitStyles.Button}>
+                <Button classes={retro8bitStyles.Button}>
                   RETRO BUTTON
                 </Button>
-                <Spinner custom_styles={retro8bitStyles.Spinner} />
+                <Spinner classes={retro8bitStyles.Spinner} />
               </div>
             </div>
           </div>
@@ -172,7 +172,7 @@ const CustomStylesDemo = () => {
                 setDrawerType('gradient');
                 setIsDrawerOpen(true);
               }}
-              custom_styles={gradientStyles.Button}
+              classes={gradientStyles.Button}
             >
               Open Gradient Drawer
             </Button>
@@ -182,7 +182,7 @@ const CustomStylesDemo = () => {
                 setDrawerType('neon');
                 setIsDrawerOpen(true);
               }}
-              custom_styles={neonStyles.Button}
+              classes={neonStyles.Button}
             >
               Open Neon Drawer
             </Button>
@@ -192,7 +192,7 @@ const CustomStylesDemo = () => {
                 setDrawerType('default');
                 setIsDrawerOpen(true);
               }}
-              custom_styles={retro8bitStyles.Button}
+              classes={retro8bitStyles.Button}
             >
               OPEN RETRO DRAWER
             </Button>
@@ -206,7 +206,7 @@ const CustomStylesDemo = () => {
           formData={formData}
           setFormData={setFormData}
           skipFirstStep={false}
-          components_custom_styles={getCurrentStyles()}
+          classes={getCurrentStyles()}
         />
 
         {/* Информация */}
@@ -216,7 +216,7 @@ const CustomStylesDemo = () => {
             <p>• <strong>Gradient Style:</strong> Яркие градиенты с анимациями и тенями</p>
             <p>• <strong>Neon Cyber Style:</strong> Киберпанк стиль с неоновыми эффектами</p>
             <p>• <strong>Retro 8-bit Style:</strong> Ретро игровой стиль с пиксельными эффектами</p>
-            <p>• Все стили применяются через проп <code className="bg-gray-700 px-2 py-1 rounded">components_custom_styles</code></p>
+            <p>• Все стили применяются через проп <code className="bg-gray-700 px-2 py-1 rounded">classes</code></p>
             <p>• Стили наследуются всеми дочерними компонентами внутри виджетов</p>
           </div>
         </section>

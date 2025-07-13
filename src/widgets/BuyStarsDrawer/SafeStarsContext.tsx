@@ -31,8 +31,8 @@ export type BuyStarsData = {
 export const SafeStarsProvider: React.FC<{ 
   children: React.ReactNode;
   config?: SafeStarsConfig;
-  components_custom_styles?: ComponentsCustomStyles;
-}> = ({ children, config = {}, components_custom_styles }) => {
+  classes?: ComponentsCustomStyles;
+}> = ({ children, config = {}, classes }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [skipFirstStep, setSkipFirstStep] = useState(false);
   const launchParams = useLaunchParams();
@@ -75,7 +75,7 @@ export const SafeStarsProvider: React.FC<{
               formData={formData}
               setFormData={setFormData}
               skipFirstStep={skipFirstStep}
-              components_custom_styles={components_custom_styles}
+              classes={classes}
             />
           </SafeStarsContext.Provider>
         </TonConnectUIProvider>

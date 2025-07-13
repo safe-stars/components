@@ -11,17 +11,17 @@ type EthPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
   paymentStatus: 'init' | 'loading' | 'success' | 'error';
   setPaymentStatus: (status: 'init' | 'loading' | 'success' | 'error') => void;
-  components_custom_styles?: ComponentsCustomStyles;
+  classes?: ComponentsCustomStyles;
 };
 
 export default function EthPayment({
   cryptoDeposit,
   paymentStatus: status,
   setPaymentStatus: setStatus,
-  components_custom_styles
+  classes
 }: EthPaymentProps) {
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} custom_styles={components_custom_styles?.Button} />
+    <Button {...props} classes={classes?.Button} />
   );
 
   const { isConnected, address } = useAccount();

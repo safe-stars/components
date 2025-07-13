@@ -21,7 +21,7 @@ type PaymentMethodSelectionProps = {
   onBack: () => void;
   onContinue: () => void;
   skipFirstStep: boolean;
-  components_custom_styles?: ComponentsCustomStyles;
+  classes?: ComponentsCustomStyles;
 };
 
 const PaymentMethodSelection = ({
@@ -32,13 +32,13 @@ const PaymentMethodSelection = ({
   onBack,
   onContinue,
   skipFirstStep,
-  components_custom_styles
+  classes
 }: PaymentMethodSelectionProps) => {
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} custom_styles={components_custom_styles?.Button} />
+    <Button {...props} classes={classes?.Button} />
   );
   const Spinner_custom = (props: SpinnerCustomProps) => (
-    <Spinner {...props} custom_styles={components_custom_styles?.Spinner} />
+    <Spinner {...props} classes={classes?.Spinner} />
   );
 
   const [price, setPrice] = useState<number | null>(null);

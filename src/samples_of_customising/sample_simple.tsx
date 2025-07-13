@@ -13,12 +13,12 @@ export default function SampleApp() {
       
       <div className="flex gap-4 flex-wrap">
         <BuyStarsButton />
-        <BuyStarsButton stars={100} components_custom_styles={{
+        <BuyStarsButton stars={100} classes={{
           "Button": {
             'button': 'bg-red-500',
           },
         }} />
-        <BuyStarsButton stars={500} components_custom_styles={{
+        <BuyStarsButton stars={500} classes={{
           "Button": {
             'button': 'bg-red-500',
           },
@@ -39,7 +39,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       config={{
         tonCenterApiKey: import.meta.env.VITE_TON_API_KEY,
         alchemyApiKey: import.meta.env.VITE_ALCHEMY_API_KEY
-      }} components_custom_styles={{
+      }} classes={{
         "Button": {
           'button': 'bg-red-500',
         },

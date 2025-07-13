@@ -9,7 +9,7 @@ export interface ComponentsCustomStyles {
   Spinner?: SpinnerCustomStyles;
 }
 
-// Типы для кастомизированных компонентов (без custom_styles)
-export type ButtonCustomProps = Omit<ButtonProps, 'custom_styles'>;
-export type DrawerCustomProps = Omit<DrawerProps, 'custom_styles'>;
-export type SpinnerCustomProps = Omit<SpinnerProps, 'custom_styles'>; 
+// Типы для кастомизированных компонентов (без classes)
+export type ButtonCustomProps = Omit<ButtonProps, 'classes'>;
+export type DrawerCustomProps = Omit<DrawerProps, 'classes'>;
+export type SpinnerCustomProps = Omit<SpinnerProps, 'classes'>; 

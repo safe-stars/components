@@ -20,7 +20,7 @@ type PaymentMethodSelectionProps = {
   cryptoDeposit: Payment | null;
   setDepositUrl: (url: string | null) => void;
   setCryptoDeposit: (deposit: Payment | null) => void;
-  components_custom_styles?: ComponentsCustomStyles;
+  classes?: ComponentsCustomStyles;
 };
 
 const PaymentForm = ({
@@ -33,14 +33,14 @@ const PaymentForm = ({
   cryptoDeposit,
   setDepositUrl,
   setCryptoDeposit,
-  components_custom_styles
+  classes
 }: PaymentMethodSelectionProps) => {
   // Переопределяем компоненты с применением кастомных стилей (короткий синтаксис)
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} custom_styles={components_custom_styles?.Button} />
+    <Button {...props} classes={classes?.Button} />
   );
   const Spinner_custom = (props: SpinnerCustomProps) => (
-    <Spinner {...props} custom_styles={components_custom_styles?.Spinner} />
+    <Spinner {...props} classes={classes?.Spinner} />
   );
 
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -183,7 +183,7 @@ const PaymentForm = ({
                   cryptoDeposit={cryptoDeposit} 
                   paymentStatus={cryptoPaymentStatus} 
                   setPaymentStatus={setCryptoPaymentStatus}
-                  components_custom_styles={components_custom_styles}
+                  classes={classes}
                 />
               )}
 
@@ -192,7 +192,7 @@ const PaymentForm = ({
                   cryptoDeposit={cryptoDeposit} 
                   paymentStatus={cryptoPaymentStatus} 
                   setPaymentStatus={setCryptoPaymentStatus}
-                  components_custom_styles={components_custom_styles}
+                  classes={classes}
                 />
               )}
             </div>

@@ -51,14 +51,14 @@ const CustomStylesDemo = () => {
           <div className="flex flex-col space-y-4 items-center">
             <BuyStarsButton 
               stars={100}
-              components_custom_styles={globalCustomStyles}
+              classes={globalCustomStyles}
             >
               🌟 Buy 100 Stars (Custom Style)
             </BuyStarsButton>
             
             <BuyStarsButton 
               stars={500}
-              components_custom_styles={globalCustomStyles}
+              classes={globalCustomStyles}
             >
               💫 Buy 500 Stars (Custom Style)
             </BuyStarsButton>
@@ -73,7 +73,7 @@ const CustomStylesDemo = () => {
         <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
           <h3 className="text-lg font-semibold text-white mb-4">📝 Technical Notes</h3>
           <div className="text-sm text-gray-300 space-y-2">
-            <p>• <code className="bg-gray-800 px-2 py-1 rounded">SafeStarsProvider</code> теперь поддерживает <code className="bg-gray-800 px-2 py-1 rounded">components_custom_styles</code></p>
+            <p>• <code className="bg-gray-800 px-2 py-1 rounded">SafeStarsProvider</code> теперь поддерживает <code className="bg-gray-800 px-2 py-1 rounded">classes</code></p>
             <p>• <code className="bg-gray-800 px-2 py-1 rounded">BuyStarsDrawer</code> передает стили всем дочерним компонентам</p>
             <p>• Все стили наследуются: BuyForm → PaymentMethodSelection → PaymentForm → SuccessModal</p>
             <p>• Паттерн <code className="bg-gray-800 px-2 py-1 rounded">_custom</code> используется для внутренних компонентов</p>

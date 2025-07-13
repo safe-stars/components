@@ -14,7 +14,7 @@ export interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
   onClick?: () => void;
-  custom_styles?: ButtonCustomStyles;
+  classes?: ButtonCustomStyles;
 }
 
 const Button = ({
@@ -25,7 +25,7 @@ const Button = ({
   type = 'button',
   disabled = false,
   size = 'md',
-  custom_styles
+  classes
 }: ButtonProps) => {
   const variantClasses = {
     primary: 'bg-primary hover:bg-accent text-white',
@@ -51,7 +51,7 @@ const Button = ({
           'opacity-50 cursor-not-allowed pointer-events-none': disabled
         },
         className,
-        custom_styles?.['button']
+        classes?.['button']
       )}
       disabled={disabled}
     >

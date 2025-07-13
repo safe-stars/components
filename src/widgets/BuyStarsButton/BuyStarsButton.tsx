@@ -6,19 +6,19 @@ import { ComponentsCustomStyles, ButtonCustomProps } from "../../types";
 type BuyStarsButtonProps = {
   stars?: number;
   children?: React.ReactNode;
-  components_custom_styles?: ComponentsCustomStyles;
+  classes?: ComponentsCustomStyles;
 } & Pick<ButtonProps, 'className' | 'variant'>;
 
 const BuyStarsButton = ({ 
   stars, 
   children, 
-  components_custom_styles,
+  classes,
   ...rest 
 }: BuyStarsButtonProps) => {
   const { openDrawer } = useSafeStars();
 
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} custom_styles={components_custom_styles?.Button} />
+    <Button {...props} classes={classes?.Button} />
   );
 
   if (stars && (stars < 50 || stars > 10000)) {

@@ -15,7 +15,7 @@ export interface DrawerProps {
   onClose: () => void;
   children: React.ReactNode;
   title?: string;
-  custom_styles?: DrawerCustomStyles;
+  classes?: DrawerCustomStyles;
 }
 
 const Drawer = ({
@@ -23,7 +23,7 @@ const Drawer = ({
   onClose,
   children,
   title,
-  custom_styles,
+  classes,
 }: DrawerProps) => {
   return (
     <>
@@ -31,7 +31,7 @@ const Drawer = ({
         className={clsx(
           styles.drawerOverlay,
           isOpen && styles.visible,
-          custom_styles?.['drawer-overlay']
+          classes?.['drawer-overlay']
         )} 
         onClick={onClose} 
       />
@@ -39,7 +39,7 @@ const Drawer = ({
         className={clsx(
           styles.drawer,
           isOpen && styles.open,
-          custom_styles?.['drawer']
+          classes?.['drawer']
         )}
         style={{
           transform: isOpen ? undefined : 'translateY(100%)',
@@ -47,12 +47,12 @@ const Drawer = ({
       >
         <header className={clsx(
           styles.drawerHeader,
-          custom_styles?.['drawer-header']
+          classes?.['drawer-header']
         )}>
           {title && (
             <h2 className={clsx(
               styles.drawerTitle,
-              custom_styles?.['drawer-title']
+              classes?.['drawer-title']
             )}>
               {title}
             </h2>
@@ -60,7 +60,7 @@ const Drawer = ({
           <button 
             className={clsx(
               styles.drawerClose,
-              custom_styles?.['drawer-close']
+              classes?.['drawer-close']
             )} 
             onClick={onClose}
           >
@@ -69,7 +69,7 @@ const Drawer = ({
         </header>
         <div className={clsx(
           styles.drawerBody,
-          custom_styles?.['drawer-body']
+          classes?.['drawer-body']
         )}>
           {children}
         </div>

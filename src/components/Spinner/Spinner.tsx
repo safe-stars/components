@@ -6,14 +6,14 @@ export interface SpinnerCustomStyles {
 }
 
 export interface SpinnerProps {
-  custom_styles?: SpinnerCustomStyles;
+  classes?: SpinnerCustomStyles;
 }
 
-const Spinner = ({ custom_styles }: SpinnerProps) => {
+const Spinner = ({ classes }: SpinnerProps) => {
     return (
         <div className={clsx(
             styles.loader,
-            custom_styles?.['spinner']
+            classes?.['spinner']
         )}></div>
     );
 };

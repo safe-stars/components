@@ -13,7 +13,7 @@ type BuyStarsDrawerProps = {
   isOpen: boolean;
   onClose: () => void;
   skipFirstStep: boolean;
-  components_custom_styles?: ComponentsCustomStyles;
+  classes?: ComponentsCustomStyles;
 };
 
 type Step = 'form' | 'payment-method' | 'payment' | 'success';
@@ -25,11 +25,11 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
     isOpen, 
     onClose, 
     skipFirstStep,
-    components_custom_styles 
+    classes 
   } = props;
 
   const Drawer_custom = (props: DrawerCustomProps) => (
-    <Drawer {...props} custom_styles={components_custom_styles?.Drawer} />
+    <Drawer {...props} classes={classes?.Drawer} />
   );
 
   const [step, setStep] = useState<Step>('form');
@@ -70,7 +70,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
             setPaymentMethod(null);
             setAmount(null);
           }}
-          components_custom_styles={components_custom_styles}
+          classes={classes}
         />
       ) : step === 'payment-method' ? (
         <PaymentMethodSelection
@@ -81,7 +81,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
           onBack={() => setStep('form')}
           onContinue={() => setStep('payment')}
           skipFirstStep={skipFirstStep}
-          components_custom_styles={components_custom_styles}
+          classes={classes}
         />
       ) : step === 'payment' ? (
         <PaymentForm
@@ -94,14 +94,14 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
           cryptoDeposit={cryptoDeposit}
           setDepositUrl={setDepositUrl}
           setCryptoDeposit={setCryptoDeposit}
-          components_custom_styles={components_custom_styles}
+          classes={classes}
         />
       ) : step === 'success' ? (
         <SuccessModal
           userData={formData}
           onClose={handleClose}
           onBack={() => setStep('payment')}
-          components_custom_styles={components_custom_styles}
+          classes={classes}
         />
       ) : null}
     </Drawer_custom>

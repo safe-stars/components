@@ -8,17 +8,17 @@ type SuccessModalProps = {
   };
   onClose: () => void;
   onBack: () => void;
-  components_custom_styles?: ComponentsCustomStyles;
+  classes?: ComponentsCustomStyles;
 };
 
 const SuccessModal = ({ 
   userData, 
   onClose, 
   onBack,
-  components_custom_styles 
+  classes 
 }: SuccessModalProps) => {
   const Button_custom = (props: ButtonCustomProps) => (
-    <Button {...props} custom_styles={components_custom_styles?.Button} />
+    <Button {...props} classes={classes?.Button} />
   );
 
   return (

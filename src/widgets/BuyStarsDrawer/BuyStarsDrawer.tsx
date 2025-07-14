@@ -28,7 +28,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
     classes 
   } = props;
 
-  const Drawer_custom = (props: DrawerCustomProps) => (
+  const StyledDrawer = (props: DrawerCustomProps) => (
     <Drawer {...props} classes={classes} />
   );
 
@@ -54,7 +54,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
   }, [skipFirstStep, isOpen]);
 
   return (
-    <Drawer_custom 
+    <StyledDrawer 
       isOpen={isOpen} 
       onClose={handleClose} 
       title="Покупка Telegram Stars"
@@ -104,7 +104,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
           classes={classes}
         />
       ) : null}
-    </Drawer_custom>
+    </StyledDrawerm>
   );
 };
 

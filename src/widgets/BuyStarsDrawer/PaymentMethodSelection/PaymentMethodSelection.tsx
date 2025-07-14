@@ -34,10 +34,10 @@ const PaymentMethodSelection = ({
   skipFirstStep,
   classes
 }: PaymentMethodSelectionProps) => {
-  const Button_custom = (props: ButtonCustomProps) => (
+  const StyledButton = (props: ButtonCustomProps) => (
     <Button {...props} classes={classes} />
   );
-  const Spinner_custom = (props: SpinnerCustomProps) => (
+  const StyledSpinner = (props: SpinnerCustomProps) => (
     <Spinner {...props} classes={classes} />
   );
 
@@ -51,8 +51,8 @@ const PaymentMethodSelection = ({
   const markUp = config.markUp ?? 0;
   useEffect(() => {
     const fetchPrice = async () => {
-      const rubPrice = await getPrice({ amount: userData.starsCount, currency: 'RUB' });
-      const usdtPrice = await getPrice({ amount: userData.starsCount, currency: 'USDT' });
+      const rubPrice = await getPrice({ amount: userData.starsCount, currency: 'RUB', markUp });
+      const usdtPrice = await getPrice({ amount: userData.starsCount, currency: 'USDT', markUp });
 
       if (rubPrice?.valid) {
         if (status !== 'error') {
@@ -60,12 +60,6 @@ const PaymentMethodSelection = ({
         }
         setPrice(rubPrice?.price ?? null);
         setCryptoPrice(usdtPrice?.price ?? null);
-        if (price) {
-          setPrice(price * (1 + markUp));
-        }
-        if (cryptoPrice) {
-          setCryptoPrice(cryptoPrice * (1 + markUp));
-        }
       } else {
         setStatus('error');
       }
@@ -102,7 +96,7 @@ const PaymentMethodSelection = ({
 
       {status === 'loading' && (
         <div className="mb-8 flex justify-center items-center flex-1">
-          <Spinner_custom />
+          <StyledSpinner />
         </div>
       )}
       {status === 'error' && (
@@ -172,9 +166,9 @@ const PaymentMethodSelection = ({
 
           {skipFirstStep && (
             <div className="w-full mt-6 flex justify-center">
-              <Button_custom variant="secondary" onClick={onBack} size="lg">
+              <StyledButton variant="secondary" onClick={onBack} size="lg">
                 Выбрать другую сумму
-              </Button_custom>
+              </StyledButton>
             </div>
           )}
         </div>
@@ -189,16 +183,16 @@ const PaymentMethodSelection = ({
         )}
       >
         {!skipFirstStep && (
-          <Button_custom variant="secondary" onClick={onBack}>
+          <StyledButton variant="secondary" onClick={onBack}>
             Назад
-          </Button_custom>
+          </StyledButton>
         )}
-        <Button_custom
+        <StyledButton
           onClick={handleContinue}
           disabled={!paymentMethod && status === 'success'}
         >
           Продолжить
-        </Button_custom>
+        </StyledButton>
       </div>
     </div>
   );

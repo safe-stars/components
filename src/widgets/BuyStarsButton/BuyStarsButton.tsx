@@ -17,7 +17,7 @@ const BuyStarsButton = ({
 }: BuyStarsButtonProps) => {
   const { openDrawer } = useSafeStars();
 
-  const Button_custom = (props: ButtonCustomProps) => (
+  const StyledButton = (props: ButtonCustomProps) => (
     <Button {...props} classes={classes} />
   );
 
@@ -26,7 +26,7 @@ const BuyStarsButton = ({
   }
 
   return (
-    <Button_custom 
+    <StyledButton 
       onClick={() => openDrawer({ stars })} 
       {...rest}
     >
@@ -34,7 +34,7 @@ const BuyStarsButton = ({
         ? children
         : (stars ? `Buy ⭐ ${stars}` : 'Buy Stars')
       }
-    </Button_custom>
+    </StyledButton>
   );
 };
 

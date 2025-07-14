@@ -17,7 +17,7 @@ const SuccessModal = ({
   onBack,
   classes 
 }: SuccessModalProps) => {
-  const Button_custom = (props: ButtonCustomProps) => (
+  const StyledButton = (props: ButtonCustomProps) => (
     <Button {...props} classes={classes} />
   );
 
@@ -32,12 +32,12 @@ const SuccessModal = ({
       </p>
 
       <div className="flex justify-between mt-auto">
-        <Button_custom variant="secondary" onClick={onBack}>
+        <StyledButton variant="secondary" onClick={onBack}>
           Назад
-        </Button_custom>
-        <Button_custom onClick={onClose}>
+        </StyledButton>
+        <StyledButton onClick={onClose}>
           Закрыть
-        </Button_custom>
+        </StyledButton>
       </div>
     </div>
   );

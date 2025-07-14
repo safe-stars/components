@@ -19,7 +19,7 @@ export default function TonPayment({
   setPaymentStatus: setStatus,
   classes
 }: TonPaymentProps) {
-  const Button_custom = (props: ButtonCustomProps) => (
+  const StyledButton = (props: ButtonCustomProps) => (
     <Button {...props} classes={classes} />
   );
 
@@ -94,13 +94,13 @@ export default function TonPayment({
       <p>Подлючите кошелек чтобы оплатить напрямую</p>
       <TonConnectButton />
       <div className="send-payment-container">
-        <Button_custom
+        <StyledButton
           className="send-payment-button"
           onClick={sendPayment}
           disabled={status === 'loading' || status === 'success' || !isConnected}
         >
           {status === 'loading' ? 'Отправка...' : status === 'success' ? 'Оплачено' : `Отправить ${cryptoDeposit.amount} USDT`}
-        </Button_custom>
+        </StyledButton>
       </div>
     </div>
   );

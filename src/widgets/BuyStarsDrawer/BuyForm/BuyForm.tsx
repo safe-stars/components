@@ -20,7 +20,7 @@ const BuyForm = ({
 }: BuyFormProps) => {
   const [errors, setErrors] = useState({ username: '', starsCount: '' });
 
-  const Button_custom = (props: ButtonCustomProps) => (
+  const StyledButton = (props: ButtonCustomProps) => (
     <Button {...props} classes={classes} />
   );
 
@@ -87,9 +87,9 @@ const BuyForm = ({
       </div>
 
       <div className="flex justify-end mt-auto">
-        <Button_custom onClick={handleSubmit}>
+        <StyledButton onClick={handleSubmit}>
           Продолжить
-        </Button_custom>
+        </StyledButton>
       </div>
     </div>
   );

@@ -36,12 +36,13 @@ const PaymentForm = ({
   classes
 }: PaymentMethodSelectionProps) => {
   // Переопределяем компоненты с применением кастомных стилей (короткий синтаксис)
-  const Button_custom = (props: ButtonCustomProps) => (
+  const StyledButton = (props: ButtonCustomProps) => (
     <Button {...props} classes={classes} />
   );
-  const Spinner_custom = (props: SpinnerCustomProps) => (
+  const StyledSpinner = (props: SpinnerCustomProps) => (
     <Spinner {...props} classes={classes} />
   );
+
 
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [copied, setCopied] = useState<'address' | 'amount' | null>(null);
@@ -124,7 +125,7 @@ const PaymentForm = ({
 
       {status === 'loading' && (
         <div className="mb-8 flex justify-center items-center">
-          <Spinner_custom />
+          <StyledSpinner />
         </div>
       )}
       {status === 'error' && (
@@ -146,14 +147,14 @@ const PaymentForm = ({
                   sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-top-navigation"
                 />
               </div>
-              <Button_custom
+              <StyledButton
                 variant="secondary"
                 onClick={() => window.open(depositUrl, '_blank', 'noopener,noreferrer')}
                 size="sm"
                 className="mx-auto"
               >
                 Открыть в новой вкладке
-              </Button_custom>
+              </StyledButton>
             </div>
           )}
           {cryptoDeposit && paymentMethod && COINS.includes(paymentMethod) && (
@@ -202,15 +203,15 @@ const PaymentForm = ({
 
       {onBack && onContinue && (
         <div className="flex justify-between mt-auto">
-          <Button_custom variant="secondary" onClick={onBack}>
+          <StyledButton variant="secondary" onClick={onBack}>
             Назад
-          </Button_custom>
-          <Button_custom
+          </StyledButton>
+          <StyledButton
             onClick={handleContinue}
             disabled={(status !== 'success' || !paymentStatus) && cryptoPaymentStatus !== 'success'}
           >
             Готово
-          </Button_custom>
+          </StyledButton>
         </div>
       )}
     </div>

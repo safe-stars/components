@@ -20,7 +20,7 @@ export default function EthPayment({
   setPaymentStatus: setStatus,
   classes
 }: EthPaymentProps) {
-  const Button_custom = (props: ButtonCustomProps) => (
+  const StyledButton = (props: ButtonCustomProps) => (
     <Button {...props} classes={classes} />
   );
 
@@ -77,9 +77,9 @@ export default function EthPayment({
       <p>Подключите кошелек чтобы оплатить напрямую</p>
       
       {!isConnected ? (
-        <Button_custom onClick={() => open()} className="connect-wallet-button">
+        <StyledButton onClick={() => open()} className="connect-wallet-button">
           Подключить кошелек
-        </Button_custom>
+        </StyledButton>
       ) : (
         <div className="wallet-info">
           <p>Подключен: {address?.substring(0, 6)}...{address?.substring(address.length - 4)}</p>
@@ -87,7 +87,7 @@ export default function EthPayment({
       )}
       
       <div className="send-payment-container">
-        <Button_custom
+        <StyledButton
           className="send-payment-button"
           onClick={sendPayment}
           disabled={status === 'loading' || status === 'success' || !isReady || isPending || isConfirming}
@@ -95,7 +95,7 @@ export default function EthPayment({
           {status === 'loading' || isPending || isConfirming ? 'Отправка...' : 
            status === 'success' ? 'Оплачено' : 
            `Отправить ${cryptoDeposit.amount} USDT`}
-        </Button_custom>
+        </StyledButton>
       </div>
     </div>
   );

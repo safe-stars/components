@@ -7,9 +7,7 @@ export default function App() {
       <h1 className="text-h1 text-fg mb-4 break-all">@buy-stars/components</h1>
       
       <div className="flex gap-4 flex-wrap">
-        <BuyStarsButton />
-        <BuyStarsButton stars={100} />
-        <BuyStarsButton stars={500} />
+        <BuyStarsButton classes={{ Button: { root: 'bg-red-500' }}} />
       </div>
     </div>
   );

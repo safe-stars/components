@@ -21,7 +21,7 @@ const BuyForm = ({
   const [errors, setErrors] = useState({ username: '', starsCount: '' });
 
   const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes} />
+    <Button {...props} classes={classes?.['Button']} />
   );
 
   const validateForm = (): boolean => {

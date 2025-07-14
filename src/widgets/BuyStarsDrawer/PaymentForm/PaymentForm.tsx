@@ -37,10 +37,10 @@ const PaymentForm = ({
 }: PaymentMethodSelectionProps) => {
   // Переопределяем компоненты с применением кастомных стилей (короткий синтаксис)
   const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes} />
+    <Button {...props} classes={classes && classes['Button']} />
   );
   const StyledSpinner = (props: SpinnerCustomProps) => (
-    <Spinner {...props} classes={classes} />
+    <Spinner {...props} classes={classes && classes['Spinner']} />
   );
 
 

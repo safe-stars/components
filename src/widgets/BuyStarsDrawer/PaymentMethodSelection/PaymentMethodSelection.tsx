@@ -35,10 +35,10 @@ const PaymentMethodSelection = ({
   classes
 }: PaymentMethodSelectionProps) => {
   const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes} />
+    <Button {...props} classes={classes?.['Button']} />
   );
   const StyledSpinner = (props: SpinnerCustomProps) => (
-    <Spinner {...props} classes={classes} />
+    <Spinner {...props} classes={classes?.['Spinner']} />
   );
 
   const [price, setPrice] = useState<number | null>(null);

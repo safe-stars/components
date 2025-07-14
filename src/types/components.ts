@@ -5,8 +5,10 @@ export type ButtonCustomStyles = NonNullable<ButtonProps['classes']>;
 export type DrawerCustomStyles = NonNullable<DrawerProps['classes']>;
 export type SpinnerCustomStyles = NonNullable<SpinnerProps['classes']>;
 
-// Объединенный тип для удобства
-export type CustomStyles = ButtonCustomStyles & DrawerCustomStyles & SpinnerCustomStyles;
+// Новый объединенный тип как словарь
+export type CustomStyles = {
+  [key: string]: any;
+};
 
 // Типы пропсов без classes для обратной совместимости
 export type ButtonCustomProps = Omit<ButtonProps, 'classes'>;

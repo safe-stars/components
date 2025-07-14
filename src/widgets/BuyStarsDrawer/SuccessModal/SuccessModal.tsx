@@ -18,7 +18,7 @@ const SuccessModal = ({
   classes 
 }: SuccessModalProps) => {
   const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes} />
+    <Button {...props} classes={classes?.['Button']} />
   );
 
   return (

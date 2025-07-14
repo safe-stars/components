@@ -104,7 +104,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
           classes={classes}
         />
       ) : null}
-    </StyledDrawerm>
+    </StyledDrawer>
   );
 };
 

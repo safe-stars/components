@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Button, Spinner } from '../../../components';
+import { Button, ButtonProps, Spinner, SpinnerProps } from '../../../components';
 import { getPrice } from '../../../api/getPrice';
 import { verifyRecipient } from '../../../api/verifyRecipient';
-import { Coin, CustomStyles, ButtonCustomProps, SpinnerCustomProps } from '../../../types';
+import { Coin, CustomStyles } from '../../../types';
 import cn from 'classnames';
 import { useSafeStarsConfig } from '../SafeStarsContext';
 import sbpImage from '../../../assets/sbp.png';
@@ -34,11 +34,11 @@ const PaymentMethodSelection = ({
   skipFirstStep,
   classes
 }: PaymentMethodSelectionProps) => {
-  const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes?.['Button']} />
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
   );
-  const StyledSpinner = (props: SpinnerCustomProps) => (
-    <Spinner {...props} classes={classes?.['Spinner']} />
+  const StyledSpinner = (props: SpinnerProps) => (
+    <Spinner {...props} className={classes?.spinner} />
   );
 
   const [price, setPrice] = useState<number | null>(null);
@@ -49,10 +49,19 @@ const PaymentMethodSelection = ({
   const hasTonPayment = !!config.tonCenterApiKey;
   const hasArbitrumPayment = !!config.alchemyApiKey;
   const markUp = config.markUp ?? 0;
+
   useEffect(() => {
     const fetchPrice = async () => {
-      const rubPrice = await getPrice({ amount: userData.starsCount, currency: 'RUB', markUp });
-      const usdtPrice = await getPrice({ amount: userData.starsCount, currency: 'USDT', markUp });
+      const rubPrice = await getPrice({
+        amount: userData.starsCount,
+        currency: 'RUB',
+        markUp
+      });
+      const usdtPrice = await getPrice({
+        amount: userData.starsCount,
+        currency: 'USDT',
+        markUp
+      });
 
       if (rubPrice?.valid) {
         if (status !== 'error') {
@@ -65,7 +74,7 @@ const PaymentMethodSelection = ({
       }
     }
     fetchPrice();
-  }, [userData.starsCount, status]);
+  }, [userData.starsCount, markUp]);
 
   useEffect(() => {
     const fetchVerifyRecipient = async () => {

@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useState } from 'react';
-import { BuyStarsDrawer, CustomStyles } from '.';
+import { BuyStarsDrawer } from '.';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { AppKitProvider } from '../../utils/AppKitProvider';
 import { useLaunchParams } from '@telegram-apps/sdk-react';
+import { CustomStyles } from '../../types';
 
 export interface SafeStarsConfig {
   tonCenterApiKey?: string;
@@ -12,7 +13,7 @@ export interface SafeStarsConfig {
 
 interface SafeStarsContextType {
   isOpen: boolean;
-  openDrawer: (params?: { stars?: number }) => void;
+  openDrawer: (params?: { stars?: number; classes?: CustomStyles }) => void;
   closeDrawer: () => void;
 }
 
@@ -32,9 +33,10 @@ export const SafeStarsProvider: React.FC<{
   children: React.ReactNode;
   config?: SafeStarsConfig;
   classes?: CustomStyles;
-}> = ({ children, config = {}, classes }) => {
+}> = ({ children, config = {}, classes: defaultClasses }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [skipFirstStep, setSkipFirstStep] = useState(false);
+  const [classes, setClasses] = useState<CustomStyles | undefined>(defaultClasses);
   const launchParams = useLaunchParams();
   const username = launchParams.tgWebAppData?.user?.username;
 
@@ -45,12 +47,17 @@ export const SafeStarsProvider: React.FC<{
 
   const [formData, setFormData] = useState<BuyStarsData>(defaultFormData);
 
-  const openDrawer = (params?: { stars?: number }) => {
+  const openDrawer = (params?: { stars?: number; classes?: CustomStyles }) => {
     setIsOpen(true);
     if (params?.stars) {
       const stars = params?.stars ?? 50;
       setFormData(d => ({ ...d, starsCount: stars }));
       setSkipFirstStep(true);
+    }
+    if (params?.classes) {
+      setClasses(params.classes);
+    } else {
+      setClasses(defaultClasses);
     }
   };
 
@@ -58,6 +65,7 @@ export const SafeStarsProvider: React.FC<{
     setIsOpen(false);
     setSkipFirstStep(false);
     setFormData(defaultFormData);
+    setClasses(defaultClasses);
   };
 
   return (

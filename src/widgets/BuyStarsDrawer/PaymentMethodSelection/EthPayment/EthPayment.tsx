@@ -1,11 +1,11 @@
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import { useEffect, useState } from 'react';
 import { erc20Abi, parseUnits } from 'viem';
-import { Button } from '../../../../components';
+import { Button, ButtonProps } from '../../../../components';
 import { useAppKit } from '@reown/appkit/react';
 import { USDT_ADDRESS } from '../../../../utils/addresses';
 import { useSafeStarsConfig } from '../../SafeStarsContext';
-import { CustomStyles, ButtonCustomProps } from '../../../../types';
+import { CustomStyles } from '../../../../types';
 
 type EthPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
@@ -20,8 +20,8 @@ export default function EthPayment({
   setPaymentStatus: setStatus,
   classes
 }: EthPaymentProps) {
-  const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes?.['Button']} />
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
   );
 
   const { isConnected, address } = useAccount();

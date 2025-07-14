@@ -4,7 +4,7 @@ import PaymentMethodSelection from './PaymentMethodSelection/PaymentMethodSelect
 import PaymentForm from './PaymentForm/PaymentForm';
 import SuccessModal from './SuccessModal/SuccessModal';
 import { Drawer } from '../../components';
-import { Coin, Payment, CustomStyles, DrawerCustomProps } from '../../types';
+import { Coin, Payment, CustomStyles } from '../../types';
 import { BuyStarsData } from './SafeStarsContext';
 
 type BuyStarsDrawerProps = {
@@ -19,18 +19,14 @@ type BuyStarsDrawerProps = {
 type Step = 'form' | 'payment-method' | 'payment' | 'success';
 
 const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
-  const { 
-    formData, 
-    setFormData, 
-    isOpen, 
-    onClose, 
+  const {
+    formData,
+    setFormData,
+    isOpen,
+    onClose,
     skipFirstStep,
-    classes 
+    classes
   } = props;
-
-  const StyledDrawer = (props: DrawerCustomProps) => (
-    <Drawer {...props} classes={classes && classes['Drawer']} />
-  );
 
   const [step, setStep] = useState<Step>('form');
   const [paymentMethod, setPaymentMethod] = useState<'RUB' | Coin | null>(null);
@@ -54,10 +50,11 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
   }, [skipFirstStep, isOpen]);
 
   return (
-    <StyledDrawer 
-      isOpen={isOpen} 
-      onClose={handleClose} 
+    <Drawer
+      isOpen={isOpen}
+      onClose={handleClose}
       title="Покупка Telegram Stars"
+      classes={classes?.drawer}
     >
       {step === 'form' ? (
         <BuyForm
@@ -104,7 +101,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
           classes={classes}
         />
       ) : null}
-    </StyledDrawer>
+    </Drawer>
   );
 };
 

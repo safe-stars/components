@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Button, Spinner } from '../../../components';
+import { Button, ButtonProps, Spinner, SpinnerProps } from '../../../components';
 import { makeDeposit } from '../../../api/makeDeposit';
-import { Coin, COINS, CustomStyles, ButtonCustomProps, SpinnerCustomProps } from '../../../types';
+import { Coin, COINS, CustomStyles } from '../../../types';
 import TonPayment from '../PaymentMethodSelection/TonPayment/TonPayment';
 import { Payment } from '../../../types';
 import EthPayment from '../PaymentMethodSelection/EthPayment/EthPayment';
@@ -35,12 +35,11 @@ const PaymentForm = ({
   setCryptoDeposit,
   classes
 }: PaymentMethodSelectionProps) => {
-  // Переопределяем компоненты с применением кастомных стилей (короткий синтаксис)
-  const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes && classes['Button']} />
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
   );
-  const StyledSpinner = (props: SpinnerCustomProps) => (
-    <Spinner {...props} classes={classes && classes['Spinner']} />
+  const StyledSpinner = (props: SpinnerProps) => (
+    <Spinner {...props} className={classes?.spinner} />
   );
 
 

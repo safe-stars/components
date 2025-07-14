@@ -1,10 +1,10 @@
 import { useTonConnectUI, TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 import { Address, beginCell, toNano, TonClient } from '@ton/ton';
 import { useEffect, useState } from "react";
-import { Button } from "../../../../components";
+import { Button, ButtonProps } from "../../../../components";
 import { getUsdtJettonWallet } from "../../../../utils/getUsdtJettonWallet";
 import { useSafeStarsConfig } from "../../SafeStarsContext";
-import { CustomStyles, ButtonCustomProps } from "../../../../types";
+import { CustomStyles } from "../../../../types";
 
 type TonPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
@@ -19,8 +19,8 @@ export default function TonPayment({
   setPaymentStatus: setStatus,
   classes
 }: TonPaymentProps) {
-  const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes?.['Button']} />
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
   );
 
   const [tonConnectUI] = useTonConnectUI();

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button } from '../../../components';
-import { CustomStyles, ButtonCustomProps } from '../../../types';
+import { Button, ButtonProps } from '../../../components';
+import { CustomStyles } from '../../../types';
 
 type BuyFormProps = {
   formData: {
@@ -20,8 +20,8 @@ const BuyForm = ({
 }: BuyFormProps) => {
   const [errors, setErrors] = useState({ username: '', starsCount: '' });
 
-  const StyledButton = (props: ButtonCustomProps) => (
-    <Button {...props} classes={classes?.['Button']} />
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
   );
 
   const validateForm = (): boolean => {

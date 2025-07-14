@@ -10,9 +10,6 @@ export interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
   onClick?: () => void;
-  classes?: {
-    root?: string;
-  };
 }
 
 const Button = ({
@@ -23,7 +20,6 @@ const Button = ({
   type = 'button',
   disabled = false,
   size = 'md',
-  classes
 }: ButtonProps) => {
   const variantClasses = {
     primary: 'bg-primary hover:bg-accent text-white',
@@ -48,8 +44,7 @@ const Button = ({
         {
           'opacity-50 cursor-not-allowed pointer-events-none': disabled
         },
-        className,
-        classes?.root
+        className
       )}
       disabled={disabled}
     >

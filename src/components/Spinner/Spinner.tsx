@@ -2,18 +2,19 @@ import { clsx } from 'clsx';
 import styles from './styles.module.css';
 
 export interface SpinnerProps {
-  classes?: {
-    root?: string;
-  };
+  className?: string;
 }
 
-const Spinner = ({ classes }: SpinnerProps) => {
-    return (
-        <div className={clsx(
-            styles.loader,
-            classes?.root
-        )}></div>
-    );
+const Spinner = ({ className }: SpinnerProps) => {
+  return (
+    <div
+      className={clsx(
+        styles.loader,
+        className
+      )}
+    >
+    </div>
+  );
 };
 
 export default Spinner;

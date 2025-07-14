@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BuyStarsButton, SafeStarsProvider } from "./widgets";
+import {SafeStarsProvider } from "./widgets";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
 import './index.css';
 import App from "./app";

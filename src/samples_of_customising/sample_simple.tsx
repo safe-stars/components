@@ -1,24 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { SafeStarsProvider } from "./widgets";
+import { SafeStarsProvider } from "../widgets";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
-import './index.css';
-import { BuyStarsButton } from "./widgets";
+import '../index.css';
+import { BuyStarsButton } from "../widgets";
+import { CustomStyles } from "../types";
 
 export default function SampleApp() {
+  // Простые кастомные стили с новой скобочной нотацией
+  const customStyles: CustomStyles = {
+    ['Button']: {
+      root: 'bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg'
+    }
+  };
 
   return (
     <div className="p-4 bg-background h-screen">
-      <h1 className="text-h1 text-fg mb-4 break-all">@buy-stars/components</h1>
+      <h1 className="text-h1 text-fg mb-4 break-all">@buy-stars/components - Simple Example</h1>
       
       <div className="flex gap-4 flex-wrap">
+        {/* Стандартная кнопка */}
         <BuyStarsButton />
-        <BuyStarsButton stars={100} classes={{
-          Button: 'bg-red-500',
-        }} />
-        <BuyStarsButton stars={500} classes={{
-          Button: 'bg-red-500',
-        }} />
+        
+        {/* Кнопка с кастомными стилями */}
+        <BuyStarsButton stars={100} classes={customStyles} />
+        
+        {/* Кнопка с инлайн кастомизацией */}
+        <BuyStarsButton 
+          stars={500} 
+          classes={{
+            ['Button']: {
+              root: 'bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg'
+            }
+          }} 
+        />
       </div>
     </div>
   );
@@ -36,11 +51,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         tonCenterApiKey: import.meta.env.VITE_TON_API_KEY,
         alchemyApiKey: import.meta.env.VITE_ALCHEMY_API_KEY
       }} 
-      classes={{
-        Button: 'bg-red-500',
-        Drawer: 'bg-blue-500',
-        Spinner: 'bg-green-500',
-      }}
     >
       <SampleApp />
     </SafeStarsProvider>

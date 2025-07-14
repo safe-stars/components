@@ -1,7 +1,7 @@
 {
   "name": "@safe-stars/components",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component library for buying Telegram Stars in Telegram Mini Apps via Safe Stars.",
   "homepage": "https://github.com/safe-stars/components#readme",
   "repository": {

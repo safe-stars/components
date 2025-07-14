@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button } from '../../../components';
+import { Button, ButtonProps } from '../../../components';
+import { CustomStyles } from '../../../types';
 
 type BuyFormProps = {
   formData: {
@@ -8,10 +9,20 @@ type BuyFormProps = {
   };
   setFormData: (data: { username: string; starsCount: number }) => void;
   onContinue: () => void;
+  classes?: CustomStyles;
 };
 
-const BuyForm = ({ formData, setFormData, onContinue }: BuyFormProps) => {
+const BuyForm = ({ 
+  formData, 
+  setFormData, 
+  onContinue,
+  classes 
+}: BuyFormProps) => {
   const [errors, setErrors] = useState({ username: '', starsCount: '' });
+
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
+  );
 
   const validateForm = (): boolean => {
     const newErrors = { username: '', starsCount: '' };
@@ -76,9 +87,9 @@ const BuyForm = ({ formData, setFormData, onContinue }: BuyFormProps) => {
       </div>
 
       <div className="flex justify-end mt-auto">
-        <Button onClick={handleSubmit}>
+        <StyledButton onClick={handleSubmit}>
           Продолжить
-        </Button>
+        </StyledButton>
       </div>
     </div>
   );

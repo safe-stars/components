@@ -4,7 +4,7 @@ import PaymentMethodSelection from './PaymentMethodSelection/PaymentMethodSelect
 import PaymentForm from './PaymentForm/PaymentForm';
 import SuccessModal from './SuccessModal/SuccessModal';
 import { Drawer } from '../../components';
-import { Coin, Payment } from '../../types';
+import { Coin, Payment, CustomStyles } from '../../types';
 import { BuyStarsData } from './SafeStarsContext';
 
 type BuyStarsDrawerProps = {
@@ -13,12 +13,20 @@ type BuyStarsDrawerProps = {
   isOpen: boolean;
   onClose: () => void;
   skipFirstStep: boolean;
+  classes?: CustomStyles;
 };
 
 type Step = 'form' | 'payment-method' | 'payment' | 'success';
 
 const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
-  const { formData, setFormData, isOpen, onClose, skipFirstStep } = props;
+  const {
+    formData,
+    setFormData,
+    isOpen,
+    onClose,
+    skipFirstStep,
+    classes
+  } = props;
 
   const [step, setStep] = useState<Step>('form');
   const [paymentMethod, setPaymentMethod] = useState<'RUB' | Coin | null>(null);
@@ -42,7 +50,12 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
   }, [skipFirstStep, isOpen]);
 
   return (
-    <Drawer isOpen={isOpen} onClose={handleClose} title="Покупка Telegram Stars">
+    <Drawer
+      isOpen={isOpen}
+      onClose={handleClose}
+      title="Покупка Telegram Stars"
+      classes={classes?.drawer}
+    >
       {step === 'form' ? (
         <BuyForm
           formData={formData}
@@ -54,6 +67,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
             setPaymentMethod(null);
             setAmount(null);
           }}
+          classes={classes}
         />
       ) : step === 'payment-method' ? (
         <PaymentMethodSelection
@@ -64,6 +78,7 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
           onBack={() => setStep('form')}
           onContinue={() => setStep('payment')}
           skipFirstStep={skipFirstStep}
+          classes={classes}
         />
       ) : step === 'payment' ? (
         <PaymentForm
@@ -76,12 +91,14 @@ const BuyStarsDrawer = (props: BuyStarsDrawerProps) => {
           cryptoDeposit={cryptoDeposit}
           setDepositUrl={setDepositUrl}
           setCryptoDeposit={setCryptoDeposit}
+          classes={classes}
         />
       ) : step === 'success' ? (
         <SuccessModal
           userData={formData}
           onClose={handleClose}
           onBack={() => setStep('payment')}
+          classes={classes}
         />
       ) : null}
     </Drawer>

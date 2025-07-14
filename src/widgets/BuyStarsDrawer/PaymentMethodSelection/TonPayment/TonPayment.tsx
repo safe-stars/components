@@ -1,21 +1,28 @@
 import { useTonConnectUI, TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 import { Address, beginCell, toNano, TonClient } from '@ton/ton';
 import { useEffect, useState } from "react";
-import { Button } from "../../../../components";
+import { Button, ButtonProps } from "../../../../components";
 import { getUsdtJettonWallet } from "../../../../utils/getUsdtJettonWallet";
 import { useSafeStarsConfig } from "../../SafeStarsContext";
+import { CustomStyles } from "../../../../types";
 
 type TonPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
   paymentStatus: 'init' | 'loading' | 'success' | 'error';
   setPaymentStatus: (status: 'init' | 'loading' | 'success' | 'error') => void;
+  classes?: CustomStyles;
 };
 
 export default function TonPayment({
   cryptoDeposit,
   paymentStatus: status,
-  setPaymentStatus: setStatus
+  setPaymentStatus: setStatus,
+  classes
 }: TonPaymentProps) {
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
+  );
+
   const [tonConnectUI] = useTonConnectUI();
   const tonWallet = useTonWallet();
   const [isConnected, setIsConnected] = useState(false);
@@ -87,13 +94,13 @@ export default function TonPayment({
       <p>Подлючите кошелек чтобы оплатить напрямую</p>
       <TonConnectButton />
       <div className="send-payment-container">
-        <Button
+        <StyledButton
           className="send-payment-button"
           onClick={sendPayment}
           disabled={status === 'loading' || status === 'success' || !isConnected}
         >
           {status === 'loading' ? 'Отправка...' : status === 'success' ? 'Оплачено' : `Отправить ${cryptoDeposit.amount} USDT`}
-        </Button>
+        </StyledButton>
       </div>
     </div>
   );

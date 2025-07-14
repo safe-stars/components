@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import './styles.css';
+import { clsx } from 'clsx';
+import styles from './styles.module.css';
 
 export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
@@ -18,7 +19,7 @@ const Button = ({
   className = '',
   type = 'button',
   disabled = false,
-  size = 'md'
+  size = 'md',
 }: ButtonProps) => {
   const variantClasses = {
     primary: 'bg-primary hover:bg-accent text-white',
@@ -36,7 +37,15 @@ const Button = ({
     <button
       type={type}
       onClick={onClick}
-      className={`btn ${variantClasses[variant]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''} ${sizeClasses[size]}`}
+      className={clsx(
+        styles.btn,
+        variantClasses[variant],
+        sizeClasses[size],
+        {
+          'opacity-50 cursor-not-allowed pointer-events-none': disabled
+        },
+        className
+      )}
       disabled={disabled}
     >
       {children}

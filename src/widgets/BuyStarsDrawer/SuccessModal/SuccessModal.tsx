@@ -1,4 +1,5 @@
-import { Button } from "../../../components";
+import { Button, ButtonProps } from "../../../components";
+import { CustomStyles } from "../../../types";
 
 type SuccessModalProps = {
   userData: {
@@ -7,9 +8,19 @@ type SuccessModalProps = {
   };
   onClose: () => void;
   onBack: () => void;
+  classes?: CustomStyles;
 };
 
-const SuccessModal = ({ userData, onClose, onBack }: SuccessModalProps) => {
+const SuccessModal = ({
+  userData,
+  onClose,
+  onBack,
+  classes
+}: SuccessModalProps) => {
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
+  );
+
   return (
     <div className="flex flex-col h-full">
       <p className="mb-6 text-lg">
@@ -21,14 +32,12 @@ const SuccessModal = ({ userData, onClose, onBack }: SuccessModalProps) => {
       </p>
 
       <div className="flex justify-between mt-auto">
-        <Button variant="secondary" onClick={onBack}>
+        <StyledButton variant="secondary" onClick={onBack}>
           Назад
-        </Button>
-        <Button
-          onClick={onClose}
-        >
+        </StyledButton>
+        <StyledButton onClick={onClose}>
           Закрыть
-        </Button>
+        </StyledButton>
       </div>
     </div>
   );

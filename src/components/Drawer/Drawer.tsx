@@ -1,32 +1,74 @@
-import './styles.css';
+import { clsx } from 'clsx';
+import styles from './styles.module.css';
 
-type DrawerProps = {
+export interface DrawerProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   title?: string;
-};
+  classes?: {
+    root?: string;
+    overlay?: string;
+    header?: string;
+    title?: string;
+    closeButton?: string;
+    content?: string;
+  };
+}
 
 const Drawer = ({
   isOpen,
   onClose,
   children,
   title,
+  classes,
 }: DrawerProps) => {
   return (
     <>
-      <div className={`drawer-overlay ${isOpen ? 'visible' : ''}`} onClick={onClose} />
       <div 
-        className={`drawer ${isOpen ? 'open' : ''}`}
+        className={clsx(
+          styles.drawerOverlay,
+          isOpen && styles.visible,
+          classes?.overlay
+        )} 
+        onClick={onClose} 
+      />
+      <div 
+        className={clsx(
+          styles.drawer,
+          isOpen && styles.open,
+          classes?.root
+        )}
         style={{
           transform: isOpen ? undefined : 'translateY(100%)',
         }}
       >
-        <header className="drawer-header">
-          {title && <h2 className="drawer-title">{title}</h2>}
-          <button className="drawer-close" onClick={onClose}>×</button>
+        <header className={clsx(
+          styles.drawerHeader,
+          classes?.header
+        )}>
+          {title && (
+            <h2 className={clsx(
+              styles.drawerTitle,
+              classes?.title
+            )}>
+              {title}
+            </h2>
+          )}
+          <button 
+            className={clsx(
+              styles.drawerClose,
+              classes?.closeButton
+            )}  
+            onClick={onClose}
+          >
+            ×
+          </button>
         </header>
-        <div className="drawer-body">
+        <div className={clsx(
+          styles.drawerBody,
+          classes?.content
+        )}>
           {children}
         </div>
       </div>

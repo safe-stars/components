@@ -1,13 +1,20 @@
 import { ButtonProps } from "components/Button/Button";
 import { Button } from "../../components";
 import { useSafeStars } from "../BuyStarsDrawer";
+import { CustomStyles } from "../../types";
 
 type BuyStarsButtonProps = {
   stars?: number;
   children?: React.ReactNode;
+  classes?: CustomStyles;
 } & Pick<ButtonProps, 'className' | 'variant'>;
 
-const BuyStarsButton = ({ stars, children, ...rest }: BuyStarsButtonProps) => {
+const BuyStarsButton = ({
+  stars,
+  children,
+  classes,
+  ...rest
+}: BuyStarsButtonProps) => {
   const { openDrawer } = useSafeStars();
 
   if (stars && (stars < 50 || stars > 10000)) {
@@ -15,7 +22,11 @@ const BuyStarsButton = ({ stars, children, ...rest }: BuyStarsButtonProps) => {
   }
 
   return (
-    <Button onClick={() => openDrawer({ stars })} {...rest}>
+    <Button
+      onClick={() => openDrawer({ stars, classes })}
+      className={classes?.button}
+      {...rest}
+    >
       {children
         ? children
         : (stars ? `Buy ⭐ ${stars}` : 'Buy Stars')

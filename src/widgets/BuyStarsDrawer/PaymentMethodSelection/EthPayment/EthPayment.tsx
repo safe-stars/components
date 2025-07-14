@@ -1,22 +1,29 @@
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import { useEffect, useState } from 'react';
 import { erc20Abi, parseUnits } from 'viem';
-import { Button } from '../../../../components';
+import { Button, ButtonProps } from '../../../../components';
 import { useAppKit } from '@reown/appkit/react';
 import { USDT_ADDRESS } from '../../../../utils/addresses';
 import { useSafeStarsConfig } from '../../SafeStarsContext';
+import { CustomStyles } from '../../../../types';
 
 type EthPaymentProps = {
   cryptoDeposit: { address: string, amount: string };
   paymentStatus: 'init' | 'loading' | 'success' | 'error';
   setPaymentStatus: (status: 'init' | 'loading' | 'success' | 'error') => void;
+  classes?: CustomStyles;
 };
 
 export default function EthPayment({
   cryptoDeposit,
   paymentStatus: status,
-  setPaymentStatus: setStatus
+  setPaymentStatus: setStatus,
+  classes
 }: EthPaymentProps) {
+  const StyledButton = (props: ButtonProps) => (
+    <Button {...props} className={classes?.button} />
+  );
+
   const { isConnected, address } = useAccount();
   const [isReady, setIsReady] = useState(false);
   const { open } = useAppKit();
@@ -70,9 +77,9 @@ export default function EthPayment({
       <p>Подключите кошелек чтобы оплатить напрямую</p>
       
       {!isConnected ? (
-        <Button onClick={() => open()} className="connect-wallet-button">
+        <StyledButton onClick={() => open()} className="connect-wallet-button">
           Подключить кошелек
-        </Button>
+        </StyledButton>
       ) : (
         <div className="wallet-info">
           <p>Подключен: {address?.substring(0, 6)}...{address?.substring(address.length - 4)}</p>
@@ -80,7 +87,7 @@ export default function EthPayment({
       )}
       
       <div className="send-payment-container">
-        <Button
+        <StyledButton
           className="send-payment-button"
           onClick={sendPayment}
           disabled={status === 'loading' || status === 'success' || !isReady || isPending || isConfirming}
@@ -88,7 +95,7 @@ export default function EthPayment({
           {status === 'loading' || isPending || isConfirming ? 'Отправка...' : 
            status === 'success' ? 'Оплачено' : 
            `Отправить ${cryptoDeposit.amount} USDT`}
-        </Button>
+        </StyledButton>
       </div>
     </div>
   );

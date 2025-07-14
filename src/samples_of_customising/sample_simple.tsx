@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { SafeStarsProvider } from "../widgets";
+import { SafeStarsProvider } from "./widgets";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
-import '../index.css';
-import { BuyStarsButton } from "../widgets";
-import { CustomStyles } from "../types";
+import './index.css';
+import { BuyStarsButton } from "./widgets";
+import { CustomStyles } from "./types";
 
 export default function SampleApp() {
   // Простые кастомные стили с новой скобочной нотацией

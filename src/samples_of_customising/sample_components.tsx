@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import { BuyStarsButton, BuyStarsDrawer, SafeStarsProvider } from "../widgets";
-import { Button, Spinner } from "../components";
+import { BuyStarsButton, BuyStarsDrawer, SafeStarsProvider } from "./widgets";
+import { Button, Spinner } from "./components";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
-import '../index.css';
-import { CustomStyles } from "../types";
+import './index.css';
+import { CustomStyles } from "./types";
 
 mockTelegramEnv({
   launchParams:
@@ -221,7 +221,7 @@ const CustomStylesDemo = () => {
             <p>• <strong>Neon Cyber Style:</strong> Киберпанк стиль с неоновыми эффектами</p>
             <p>• <strong>Retro 8-bit Style:</strong> Ретро игровой стиль с пиксельными эффектами</p>
             <p>• Все стили применяются через проп <code className="bg-gray-700 px-2 py-1 rounded">classes</code></p>
-            <p>• Использует новую скобочную нотацию: <code className="bg-gray-700 px-2 py-1 rounded">['Button']: {`{ root: '...' }`}</code></p>
+            <p>• Использует новую скобочную нотацию: <code className="bg-gray-700 px-2 py-1 rounded">['Button']: {`{ root: '..' }`}</code></p>
             <p>• Стили наследуются всеми дочерними компонентами внутри виджетов</p>
           </div>
         </section>

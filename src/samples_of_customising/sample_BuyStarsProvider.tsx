@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BuyStarsButton, SafeStarsProvider } from "../widgets";
+import { BuyStarsButton, SafeStarsProvider } from "./widgets";
 import { mockTelegramEnv } from "@telegram-apps/sdk-react";
-import '../index.css';
-import { CustomStyles } from "../types";
+import './index.css';
+import { CustomStyles } from "./types";
 
 mockTelegramEnv({
   launchParams:
@@ -69,7 +69,7 @@ const CustomStylesDemo = () => {
           <h3 className="text-lg font-semibold text-white mb-4">📝 Technical Notes</h3>
           <div className="text-sm text-gray-300 space-y-2">
             <p>• <code className="bg-gray-800 px-2 py-1 rounded">SafeStarsProvider</code> принимает <code className="bg-gray-800 px-2 py-1 rounded">classes</code> prop</p>
-            <p>• Использует скобочную нотацию: <code className="bg-gray-800 px-2 py-1 rounded">['Button']: {`{ root: '...' }`}</code></p>
+            <p>• Использует скобочную нотацию: <code className="bg-gray-800 px-2 py-1 rounded">['Button']: {`{ root: '..' }`}</code></p>
             <p>• Стили наследуются всеми дочерними компонентами</p>
             <p>• Поддерживаются все компоненты: Button, Drawer, Spinner</p>
           </div>

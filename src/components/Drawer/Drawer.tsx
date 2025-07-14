@@ -1,13 +1,19 @@
 import { clsx } from 'clsx';
 import styles from './styles.module.css';
-import {DrawerCustomStyles} from '../../types'
 
 export interface DrawerProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   title?: string;
-  classes?: DrawerCustomStyles;
+  classes?: {
+    root?: string;
+    overlay?: string;
+    header?: string;
+    title?: string;
+    closeButton?: string;
+    content?: string;
+  };
 }
 
 const Drawer = ({
@@ -23,7 +29,7 @@ const Drawer = ({
         className={clsx(
           styles.drawerOverlay,
           isOpen && styles.visible,
-          classes?.DrawerOverlay
+          classes?.overlay
         )} 
         onClick={onClose} 
       />
@@ -31,7 +37,7 @@ const Drawer = ({
         className={clsx(
           styles.drawer,
           isOpen && styles.open,
-          classes?.Drawer
+          classes?.root
         )}
         style={{
           transform: isOpen ? undefined : 'translateY(100%)',
@@ -39,12 +45,12 @@ const Drawer = ({
       >
         <header className={clsx(
           styles.drawerHeader,
-          classes?.DrawerHeader
+          classes?.header
         )}>
           {title && (
             <h2 className={clsx(
               styles.drawerTitle,
-              classes?.DrawerTitle
+              classes?.title
             )}>
               {title}
             </h2>
@@ -52,7 +58,7 @@ const Drawer = ({
           <button 
             className={clsx(
               styles.drawerClose,
-              classes?.DrawerClose
+              classes?.closeButton
             )}  
             onClick={onClose}
           >
@@ -61,7 +67,7 @@ const Drawer = ({
         </header>
         <div className={clsx(
           styles.drawerBody,
-          classes?.DrawerBody
+          classes?.content
         )}>
           {children}
         </div>

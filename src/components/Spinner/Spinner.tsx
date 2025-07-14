@@ -1,16 +1,17 @@
 import { clsx } from 'clsx';
 import styles from './styles.module.css';
-import {SpinnerCustomStyles} from '../../types'
 
 export interface SpinnerProps {
-  classes?: SpinnerCustomStyles;
+  classes?: {
+    root?: string;
+  };
 }
 
 const Spinner = ({ classes }: SpinnerProps) => {
     return (
         <div className={clsx(
             styles.loader,
-            classes?.Spinner
+            classes?.root
         )}></div>
     );
 };

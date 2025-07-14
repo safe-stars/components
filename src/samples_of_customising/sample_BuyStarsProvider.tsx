@@ -9,16 +9,14 @@ mockTelegramEnv({
     "tgWebAppData=user%3D%257B%2522id%2522%253A279058397%252C%2522first_name%2522%253A%2522Vladislav%2522%252C%2522last_name%2522%253A%2522Kibenko%2522%252C%2522username%2522%253A%2522vdkfrost%2522%252C%2522language_code%2522%253A%2522ru%2522%252C%2522is_premium%2522%253Atrue%252C%2522allows_write_to_pm%2522%253Atrue%252C%2522photo_url%2522%253A%2522https%253A%255C%252F%255C%252Ft.me%255C%252Fi%255C%252Fuserpic%255C%252F320%255C%252F4FPEE4tmP3ATHa57u6MqTDih13LTOiMoKoLDRG4PnSA.svg%2522%257D%26chat_instance%3D-9019086117643313246%26chat_type%3Dsender%26auth_date%3D1736409902%26signature%3DFNWSy6kv5n4kkmYYmfTbrgRtswTvwXgHTRWBVjp-YOv2srtMFSYCWZ9nGr_PohWZeWcooFo_oQgsnTJge3JdBA%26hash%3D4c710b1d446dd4fd301c0efbf7c31627eca193a2e657754c9e0612cb1eb71d90&tgWebAppVersion=8.0&tgWebAppPlatform=tdesktop&tgWebAppThemeParams=%7B%22accent_text_color%22%3A%22%236ab3f2%22%2C%22bg_color%22%3A%22%2317212b%22%2C%22bottom_bar_bg_color%22%3A%22%2317212b%22%2C%22button_color%22%3A%22%235289c1%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22destructive_text_color%22%3A%22%23ec3942%22%2C%22header_bg_color%22%3A%22%2317212b%22%2C%22hint_color%22%3A%22%23708599%22%2C%22link_color%22%3A%22%236ab3f3%22%2C%22secondary_bg_color%22%3A%22%23232e3c%22%2C%22section_bg_color%22%3A%22%2317212b%22%2C%22section_header_text_color%22%3A%22%236ab3f3%22%2C%22section_separator_color%22%3A%22%23111921%22%2C%22subtitle_text_color%22%3A%22%23708599%22%2C%22text_color%22%3A%22%23f5f5f5%22%7D",
 });
 
-// Демонстрационные кастомные стили для всего приложения
+// Демонстрационные кастомные стили для всего приложения (обновлено в стиле MUI)
 const globalCustomStyles = {
-  Button: 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-white/30',
-  DrawerOverlay: 'bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-pink-900/80 backdrop-blur-lg',
-  Drawer: 'bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-800 border-t-4 border-gradient-to-r from-indigo-400 to-pink-400 shadow-2xl',
-  DrawerHeader: 'bg-gradient-to-r from-indigo-700 to-purple-700 border-b-2 border-indigo-400 backdrop-blur-sm',
-  DrawerTitle: 'text-white font-bold text-xl bg-gradient-to-r from-indigo-200 to-pink-200 bg-clip-text text-transparent drop-shadow-lg',
-  DrawerClose: 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-full shadow-lg hover:shadow-red-500/25 transition-all duration-300',
-  DrawerBody: 'bg-gradient-to-br from-indigo-800/30 to-pink-800/30 backdrop-blur-sm',
-  Spinner: 'border-indigo-500 border-t-pink-500 w-10 h-10 animate-spin drop-shadow-lg'
+  root: 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-transparent hover:border-white/30',
+  overlay: 'bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-pink-900/80 backdrop-blur-lg',
+  header: 'bg-gradient-to-r from-indigo-700 to-purple-700 border-b-2 border-indigo-400 backdrop-blur-sm',
+  title: 'text-white font-bold text-xl bg-gradient-to-r from-indigo-200 to-pink-200 bg-clip-text text-transparent drop-shadow-lg',
+  closeButton: 'bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-full shadow-lg hover:shadow-red-500/25 transition-all duration-300',
+  content: 'bg-gradient-to-br from-indigo-800/30 to-pink-800/30 backdrop-blur-sm'
 };
 
 // Демонстрационный компонент для тестирования

@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { clsx } from 'clsx';
 import styles from './styles.module.css';
-import {ButtonCustomStyles} from '../../types'
 
 export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
@@ -11,7 +10,9 @@ export interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
   onClick?: () => void;
-  classes?: ButtonCustomStyles;
+  classes?: {
+    root?: string;
+  };
 }
 
 const Button = ({
@@ -48,7 +49,7 @@ const Button = ({
           'opacity-50 cursor-not-allowed pointer-events-none': disabled
         },
         className,
-        classes?.Button
+        classes?.root
       )}
       disabled={disabled}
     >

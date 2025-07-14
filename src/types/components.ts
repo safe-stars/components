@@ -1,24 +1,14 @@
 import { ButtonProps, DrawerProps, SpinnerProps } from '../components';
 
-export interface ButtonCustomStyles {
-  Button?: string;
-}
+// Извлекаем типы classes из компонентов
+export type ButtonCustomStyles = NonNullable<ButtonProps['classes']>;
+export type DrawerCustomStyles = NonNullable<DrawerProps['classes']>;
+export type SpinnerCustomStyles = NonNullable<SpinnerProps['classes']>;
 
-export interface DrawerCustomStyles   {
-  DrawerOverlay?: string;
-  Drawer?: string;
-  DrawerHeader?: string;
-  DrawerTitle?: string;
-  DrawerClose?: string;
-  DrawerBody?: string;
-}
-
-export interface SpinnerCustomStyles {
-  Spinner?: string;
-}
-
+// Объединенный тип для удобства
 export type CustomStyles = ButtonCustomStyles & DrawerCustomStyles & SpinnerCustomStyles;
 
+// Типы пропсов без classes для обратной совместимости
 export type ButtonCustomProps = Omit<ButtonProps, 'classes'>;
 export type DrawerCustomProps = Omit<DrawerProps, 'classes'>;
 export type SpinnerCustomProps = Omit<SpinnerProps, 'classes'>; 

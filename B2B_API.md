@@ -61,7 +61,7 @@ curl "https://safestars.pro/api/price?amount=1000"
 
 ### Get Balance
 
-Get your current B2B client balance and commission rate.
+Get your current B2B client balance.
 
 **Endpoint:** `GET /b2b/balance`
 
@@ -76,7 +76,7 @@ X-API-Key: your_api_key_here
   "balance": 5000,
   "b2b_client_id": "client_123",
   "b2b_client_name": "Partner Co",
-  "commission_rate": 0.05
+  "commission_rate": 0.0
 }
 ```
 
@@ -163,7 +163,7 @@ curl -X POST https://safestars.pro/api/b2b/deposit \
 
 ### Send Stars
 
-Send Telegram Stars to a user. Stars are deducted from your balance plus commission.
+Send Telegram Stars to a user. Stars are deducted from your balance.
 
 **Endpoint:** `POST /b2b/send`
 
@@ -193,9 +193,9 @@ Content-Type: application/json
   "transaction_id": "txn_abc123",
   "status": "pending",
   "stars_amount": 1000,
-  "commission": 50,
-  "total_charged": 1050,
-  "remaining_balance": 3950
+  "commission": 0,
+  "total_charged": 1000,
+  "remaining_balance": 4000
 }
 ```
 
@@ -203,7 +203,7 @@ Content-Type: application/json
 ```json
 {
   "error": "Insufficient balance",
-  "required": 1050,
+  "required": 1000,
   "current_balance": 500
 }
 ```
@@ -214,9 +214,9 @@ Content-Type: application/json
   "transaction_id": "txn_abc123",
   "status": "success",
   "stars_amount": 1000,
-  "commission": 50,
-  "total_charged": 1050,
-  "remaining_balance": 3950,
+  "commission": 0,
+  "total_charged": 1000,
+  "remaining_balance": 4000,
   "message": "Transaction already exists (idempotency)"
 }
 ```
@@ -263,20 +263,7 @@ curl -X POST https://safestars.pro/api/b2b/send \
 
 ## Commission Structure
 
-Each B2B client has a commission rate applied to stars transfers. The commission is charged in addition to the stars amount.
-
-**Formula:**
-```
-total_charged = stars_amount + (stars_amount x commission_rate)
-```
-
-**Example:**
-- Stars amount: 1000
-- Commission rate: 5% (0.05)
-- Commission: 50 stars
-- Total charged: 1050 stars
-
----
+Extra commisions for B2B clients are disabled. 
 
 ## Idempotency
 

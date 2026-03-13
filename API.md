@@ -43,7 +43,9 @@ Get the price for purchasing stars in multiple currencies.
   "price": 100.50,
   "rub": 100.50,
   "usd": 1.05,
-  "usdt": 1.05
+  "usdt": 1.05,
+  "trx": 5.23,
+  "a7a5": 150.25
 }
 ```
 
@@ -126,7 +128,7 @@ Create a crypto payment deposit to purchase stars with USDT.
 - `user_id` (required, string): Telegram user ID
 - `amount` (required, number): Payment amount in USDT
 - `stars_amount` (required, number): Number of stars to purchase. Min: `50`, Max: `50000`.
-- `coin` (optional, string): Crypto network. Options: `TON_USDT`, `arbitrum_USDT`, `TRON_USDT`, `eth_USDT`, `optimism_USDT`, `base_USDT`, `polygon_USDT`. Default: `TON_USDT`
+- `coin` (optional, string): Crypto network. Options: `TON_USDT`, `arbitrum_USDT`, `TRON_USDT`, `TRON_TRX`, `TRON_A7A5`, `eth_USDT`, `optimism_USDT`, `base_USDT`, `polygon_USDT`. Default: `TON_USDT`
 - `partner` (optional, string): Partner code for custom pricing
 
 **Response:**
@@ -202,7 +204,7 @@ Direct your users to the hosted payment page with pre-filled information:
 - `lng` (required): Language - `ru` or `en`
 - `username` (required): Telegram username (without @) who will receive stars
 - `amount` (required): Number of stars. Min: `50`, Max: `20000`
-- `method` (optional): Payment method. Options: `rub`, `ton_usdt`, `arbitrum_usdt`, `tron_usdt`, `eth_usdt`, `optimism_usdt`, `base_usdt`, `polygon_usdt`. Default: `rub`
+- `method` (optional): Payment method. Options: `rub`, `ton_usdt`, `arbitrum_usdt`, `tron_usdt`, `tron_trx`, `tron_a7a5`, `eth_usdt`, `optimism_usdt`, `base_usdt`, `polygon_usdt`. Default: `rub`
 - `partner` (required): Partner code provided by SafeStars
 
 **Example:**

@@ -237,6 +237,202 @@ curl -X POST https://safestars.pro/api/b2b/send \
     "stars_amount": 1000,
     "idempotency_key": "unique_key_123"
   }'
+ ```
+
+ ---
+
+## Premium
+
+### Get Premium Price
+
+Get the cost of Premium subscription in stars for all available periods.
+
+**Endpoint:** `GET /premium/price`
+
+**Headers:**
+```
+X-API-Key: your_api_key_here
+```
+
+**Response:**
+```json
+{
+  "premium": {
+    "3": {
+      "months": 3,
+      "stars": 800,
+      "starsWithCommission": 840
+    },
+    "6": {
+      "months": 6,
+      "stars": 1067,
+      "starsWithCommission": 1120
+    },
+    "12": {
+      "months": 12,
+      "stars": 1933,
+      "starsWithCommission": 2030
+    }
+  }
+}
+```
+
+**Response Fields:**
+- `premium` - object with prices for each period
+  - Key (3, 6, 12) - number of subscription months
+  - `months` - number of months
+  - `stars` - cost in stars (base price)
+  - `starsWithCommission` - cost in stars including B2B client commission
+
+**Price Calculation:**
+- Base star price: 0.015 USD
+- Cost in stars = ceil(price_in_USD / 0.015)
+- Cost with commission = ceil(cost_in_stars × (1 + commission_rate))
+
+**Example:**
+```bash
+curl "https://safestars.pro/api/premium/price" \
+  -H "X-API-Key: your_api_key_here"
+```
+
+---
+
+### Send Premium
+
+Send Telegram Premium subscription to a user. Stars are deducted from your B2B balance.
+
+**Endpoint:** `POST /b2b/premium/send`
+
+**Headers:**
+```
+X-API-Key: your_api_key_here
+Content-Type: application/json
+```
+
+**Request Body:**
+```json
+{
+  "username": "johndoe",
+  "months": 3,
+  "idempotency_key": "unique_key_123"
+}
+```
+
+**Fields:**
+- `username` (required, string): Telegram username (without @)
+- `months` (required, number): Premium subscription duration in months. Options: `3`, `6`, `12`
+- `idempotency_key` (optional, string): Unique key to prevent duplicate transactions
+
+**Response (Success):**
+```json
+{
+  "transaction_id": "txn_abc123",
+  "status": "pending",
+  "months": 3,
+  "stars_amount": 840,
+  "remaining_balance": 4160
+}
+```
+
+**Response (Insufficient Balance):**
+```json
+{
+  "error": "Insufficient balance",
+  "required": 840,
+  "current_balance": 500
+}
+```
+
+**Response (Duplicate with Idempotency Key):**
+```json
+{
+  "transaction_id": "txn_abc123",
+  "status": "success",
+  "months": 3,
+  "stars_amount": 840,
+  "remaining_balance": 4160,
+  "message": "Transaction already exists (idempotency)"
+}
+```
+
+**Status Values:**
+- `pending`: Transaction created, processing Premium transfer
+- `success`: Premium successfully delivered
+- `error`: Transaction failed
+
+**Price Calculation:**
+- Use `GET /premium/price` to get current prices
+- Stars are calculated as: `base_stars × (1 + commission_rate)`
+- Example: 3 months = 800 base stars + 5% commission = 840 stars
+
+**Example:**
+```bash
+curl -X POST https://safestars.pro/api/b2b/premium/send \
+  -H "X-API-Key: your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "johndoe",
+    "months": 3,
+    "idempotency_key": "unique_key_123"
+  }'
+```
+
+---
+
+## Get Transaction Status
+
+Get the status of a B2B transaction by its ID. Transaction ID is returned by `/send` and `/premium/send` endpoints.
+
+**Endpoint:** `GET /transaction/:id`
+
+**Headers:**
+```
+X-API-Key: your_api_key_here
+```
+
+**URL Parameters:**
+- `id` (required, string): Transaction ID (UUID)
+
+**Response (Success):**
+```json
+{
+  "transaction_id": "txn_abc123",
+  "status": "success",
+  "username": "johndoe",
+  "stars_amount": 1000,
+  "commission": 50,
+  "total_charged": 1050,
+  "timestamp": 1704067200
+}
+```
+
+**Response Fields:**
+- `transaction_id` - unique transaction identifier
+- `status` - current transaction status
+- `username` - Telegram username who received the stars/premium
+- `stars_amount` - amount of stars sent
+- `commission` - commission charged (based on B2B client rate)
+- `total_charged` - total amount charged (stars_amount + commission)
+- `timestamp` - Unix timestamp when transaction was created
+
+**Status Values:**
+- `null` - awaiting processing
+- `pending` - transaction created, processing stars transfer
+- `in_progress` - stars transfer in progress
+- `success` - stars/premium successfully delivered
+- `error` - transaction failed
+
+**Response (Not Found):**
+```json
+{
+  "error": "Transaction not found"
+}
+```
+
+**Example:**
+```bash
+curl "https://safestars.pro/api/transaction/txn_abc123" \
+  -H "X-API-Key: your_api_key_here"
 ```
 
 ---

@@ -204,7 +204,7 @@ Direct your users to the hosted payment page with pre-filled information:
 - `lng` (required): Language - `ru` or `en`
 - `username` (required): Telegram username (without @) who will receive stars
 - `amount` (required): Number of stars. Min: `50`, Max: `20000`
-- `method` (optional): Payment method. Options: `rub`, `ton_usdt`, `arbitrum_usdt`, `tron_usdt`, `tron_trx`, `tron_a7a5`, `eth_usdt`, `optimism_usdt`, `base_usdt`, `polygon_usdt`. Default: `rub`
+- `method` (optional): Payment method. Options: `rub`, `uzs`, `kzt`, `eur`, `usd`, `ton_usdt`, `arbitrum_usdt`, `tron_usdt`, `tron_trx`, `eth_usdt`, `optimism_usdt`, `base_usdt`, `polygon_usdt`. If omitted, the user selects the method on the page.
 - `partner` (required): Partner code provided by SafeStars
 
 **Example:**
